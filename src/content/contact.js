@@ -3,11 +3,11 @@
 export const contactHero = {
   heading: 'Get in Touch With Star Metal Store',
   subheading:
-    'For bulk orders, wholesale enquiries, equipment sourcing, and after-sales service — our team is available.',
+    'Bulk orders, wholesale enquiries and after-sales service.',
 }
 
 export const contactIntro =
-  "Star Metal Store has been serving commercial buyers from its Pondicherry location since 1988. Whether you're planning a full kitchen setup, reordering bulk vessels, or need to discuss a custom requirement — reach out to our team directly. We work best with buyers who know what they need; if you're still working it out, we can help with that too."
+  'Planning a full kitchen setup, reordering bulk vessels or need something custom? Tell us what you need — or let us help you work it out.'
 
 export const form = {
   heading: 'Send Us a Bulk Enquiry',
@@ -36,16 +36,16 @@ export const form = {
     contactMethod: { label: 'Preferred contact method', options: ['Phone call', 'WhatsApp', 'Email'] },
   },
   submit: 'Send Enquiry',
-  note: 'We typically respond within one business day. For urgent requirements, call or WhatsApp directly.',
+  note: 'We reply within one business day. Urgent? Call or WhatsApp us.',
 }
 
 export const reach = {
   heading: 'Finding Us in Pondicherry',
-  body: 'Our store is located in Pondicherry — well-connected by road to buyers from Villupuram, Cuddalore, Tindivanam, Chidambaram, and the broader coastal Tamil Nadu belt. Buyers from further afield — Chennai, Vellore, Trichy — regularly visit us for bulk procurement, as our pricing makes the trip worthwhile.',
+  body: 'Easy to reach from Villupuram, Cuddalore, Tindivanam and Chidambaram — buyers from Chennai, Vellore and Trichy make the trip for our prices.',
   mapPlaceholder: 'Map embed and specific address / landmark directions to be added here',
 }
 
 export const afterSales = {
   heading: 'After-Sales Support',
-  body: "If you're an existing customer and need after-sales support or a replacement enquiry, contact us on the same number. Our policy is to address service issues on applicable products — please have your purchase details ready when you call.",
+  body: 'Existing customer? Call the same number for service or replacements — keep your purchase details handy.',
 }

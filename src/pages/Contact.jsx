@@ -99,7 +99,7 @@ function EnquiryForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="rounded-sm border border-line border-t-[3px] border-t-primary bg-white p-5 sm:p-8">
-      <h2 className="text-[1.85rem] leading-tight font-semibold text-secondary sm:text-[2.1rem]">{form.heading}</h2>
+      <h2 className="text-[1.45rem] leading-tight font-semibold text-secondary sm:text-[2.1rem]">{form.heading}</h2>
       <div className="mt-3 h-[2px] w-12 bg-accent" />
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -180,7 +180,7 @@ export default function Contact() {
         <div className="container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="max-w-[42rem] text-lg leading-relaxed text-secondary sm:text-xl">{contactIntro}</p>
+              <p className="max-w-[42rem] text-[0.95rem] leading-relaxed text-secondary sm:text-xl">{contactIntro}</p>
             </Reveal>
             <Reveal delay={80} className="mt-10">
               <EnquiryForm />
@@ -195,7 +195,7 @@ export default function Contact() {
                 <span className="relative grid h-12 w-12 place-items-center rounded-xs bg-primary text-white">
                   <Icon name="wrench" size={24} />
                 </span>
-                <h2 className="relative mt-6 text-[1.85rem] leading-tight font-semibold">{afterSales.heading}</h2>
+                <h2 className="relative mt-5 text-[1.45rem] leading-tight font-semibold sm:mt-6 sm:text-[1.85rem]">{afterSales.heading}</h2>
                 <p className="relative mt-4 leading-relaxed text-text-inverse-muted">{afterSales.body}</p>
                 <div className="relative mt-6 flex flex-wrap items-center gap-2 border-t border-line-dark pt-5">
                   <Icon name="phone" size={18} className="text-accent-soft" />

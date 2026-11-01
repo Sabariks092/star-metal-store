@@ -96,13 +96,13 @@ function NumberChip({ n }) {
 function ProductBody({ p, large = false }) {
   return (
     <>
-      <h3 className={`font-semibold text-secondary ${large ? 'mt-2 text-[1.75rem] leading-tight sm:text-[2.25rem]' : 'text-[1.3rem] leading-snug'}`}>{p.name}</h3>
+      <h3 className={`font-semibold text-secondary ${large ? 'mt-2 text-[1.4rem] leading-tight sm:text-[2.25rem]' : 'text-[1.15rem] leading-snug sm:text-[1.3rem]'}`}>{p.name}</h3>
       {p.alias && (
         <span className="mt-2 inline-block self-start rounded-sm border border-line bg-surface px-2 py-0.5 text-[0.8rem] text-text-muted">
           also: <em>{p.alias}</em>
         </span>
       )}
-      <p className={`mt-3 leading-relaxed text-text-muted ${large ? 'max-w-prose text-[1.05rem] sm:text-lg' : 'text-[0.95rem]'}`}>{p.desc}</p>
+      <p className={`mt-3 leading-relaxed text-text-muted ${large ? 'max-w-prose text-[0.95rem] sm:text-lg' : 'text-[0.9rem] sm:text-[0.95rem]'}`}>{p.desc}</p>
       {p.note && (
         <p className="mt-4 rounded-sm border-l-2 border-accent bg-surface px-3 py-2 text-sm leading-relaxed text-text-muted">{p.note}</p>
       )}
@@ -145,9 +145,9 @@ export default function Category({ slug }) {
         image={categoryBanner(slug)}
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Products', to: '/#products' }, { label: c.card.title }]}
       >
-        <Reveal delay={150} className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button to={enquireTo}>{hero.primaryCta}</Button>
-          <Button href="#range" variant="ghostLight">{c.card.summary}</Button>
+        <Reveal delay={150} className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+          <Button to={enquireTo} className="max-sm:!min-h-11 max-sm:shadow-[0_10px_24px_-10px_rgb(224_32_40/0.7)]">{hero.primaryCta}</Button>
+          <Button href="#range" variant="ghostLight" className="max-sm:hidden">{c.card.summary}</Button>
         </Reveal>
       </PageHero>
 
@@ -156,7 +156,7 @@ export default function Category({ slug }) {
         <div className="container grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-6">
             <Eyebrow>Category Overview</Eyebrow>
-            <p className="mt-5 text-xl leading-relaxed text-secondary sm:text-[1.3rem]">{c.intro}</p>
+            <p className="mt-4 text-[1rem] leading-relaxed text-secondary sm:mt-5 sm:text-[1.3rem]">{c.intro}</p>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-5 lg:col-start-8">
             <div className="relative overflow-hidden rounded-sm bg-secondary p-6 text-surface sm:p-8">
@@ -188,9 +188,9 @@ export default function Category({ slug }) {
             <div className="grid overflow-hidden rounded-sm border border-line bg-white md:grid-cols-[15rem_1fr]">
               <div className="flex items-center gap-4 border-b-[3px] border-accent bg-surface-sunk p-6 text-secondary md:flex-col md:items-start md:justify-between md:border-r-[3px] md:border-b-0 md:p-8">
                 <Icon name={c.theme.icon} size={40} className="shrink-0 text-accent" />
-                <p className="font-display text-[1.5rem] leading-tight font-semibold">{c.note.heading}</p>
+                <p className="font-display text-[1.25rem] leading-tight font-semibold sm:text-[1.5rem]">{c.note.heading}</p>
               </div>
-              <p className="p-6 text-lg leading-relaxed text-text-primary sm:p-10">{c.note.body}</p>
+              <p className="p-5 text-[0.95rem] leading-relaxed text-text-primary sm:p-10 sm:text-lg">{c.note.body}</p>
             </div>
           </Reveal>
         </div>

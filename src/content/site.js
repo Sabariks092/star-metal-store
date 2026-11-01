@@ -12,7 +12,14 @@ export const business = {
       { display: '0413 2220768', tel: '+914132220768' },
     ],
   },
-  whatsapp: { pending: true, label: 'WhatsApp', note: 'to be added' },
+  whatsapp: {
+    pending: true,
+    label: 'WhatsApp',
+    note: 'to be added',
+    // TODO: WhatsApp number with country code, digits only (e.g. '919876543210'). Used by the floating button.
+    number: '',
+    enquiry: "Hi Star Metal Store, I'd like a bulk quote. Please share price and availability for:",
+  },
   email: { label: 'Email', value: 'Starmetalstore@yahoo.com' },
   address: {
     label: 'Address',
