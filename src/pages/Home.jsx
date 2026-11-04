@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { Button, Eyebrow,EyebrowNoBorder , Pending, Reveal, SectionHead, Star } from '../components/ui'
 import { usePageMeta } from '../components/usePageMeta'
+import { heroBtn } from '../components/PageHero'
 import { hero, trustBar, whoWeServe, productsSection, whyUs, location, testimonials } from '../content/home'
 import { categories } from '../content/categories'
 import { business, footer, meta } from '../content/site'
@@ -12,14 +13,15 @@ const pad = (n) => String(n).padStart(2, '0')
 const pillarIcons = ['hourglass', 'scale', 'wrench', 'book']
 const trustIcons = ['clock', 'handshake', 'scale', 'wrench', 'pin']
 
-// Hero carousel — the three 1920×1080 hero scenes
+// Hero carousel — the three hero scenes, then the category banners (same dark-left layout)
 const heroSlides = [
   // `seam`: photo has a hard-edged dark panel on its left half that needs feathering
-  { key: 'homeHero', seam: false },
-  { key: 'aboutHero', seam: true },
-  { key: 'contactHero', seam: true },
+  { src: sceneSrc('homeHero'), seam: false },
+  { src: sceneSrc('aboutHero'), seam: true },
+  { src: sceneSrc('contactHero'), seam: true },
+  ...categories.map((c) => ({ src: categoryBanner(c.slug), seam: false })),
 ]
-const SLIDE_MS = 6000
+const SLIDE_MS = 3000
 
 // Google Maps place for the store
 const mapEmbed =
@@ -27,115 +29,64 @@ const mapEmbed =
 const mapLink = 'https://www.google.com/maps?cid=7832759121906646307'
 const reachTowns = ['Cuddalore', 'Villupuram', 'Tindivanam', 'Chidambaram', 'Chennai']
 
-const ctrlBtn =
-  'grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-white/40 text-white transition-colors hover:border-white hover:bg-white/10'
-
-function HeroControls({ active, count, paused, go, togglePause }) {
-  return (
-    <div className="flex flex-wrap items-center gap-3 [text-shadow:none] lg:justify-end">
-      <button type="button" onClick={() => go(active - 1)} aria-label="Previous slide" className={ctrlBtn}>
-        <Icon name="chevron" size={18} strokeWidth={2} className="rotate-90" />
-      </button>
-      <div className="flex items-center gap-1.5">
-        {Array.from({ length: count }, (_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => go(i)}
-            aria-label={`Show slide ${i + 1}`}
-            aria-current={i === active ? 'true' : undefined}
-            className="group px-0.5 py-4"
-          >
-            <span className={`block h-[3px] transition-all duration-300 ${i === active ? 'w-10 bg-primary' : 'w-5 bg-white/50 group-hover:bg-white'}`} />
-          </button>
-        ))}
-      </div>
-      <button type="button" onClick={() => go(active + 1)} aria-label="Next slide" className={ctrlBtn}>
-        <Icon name="chevron" size={18} strokeWidth={2} className="-rotate-90" />
-      </button>
-      <button type="button" onClick={togglePause} aria-label={paused ? 'Play slideshow' : 'Pause slideshow'} className={ctrlBtn}>
-        {paused ? (
-          <span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" />
-        ) : (
-          <span className="flex gap-[3px]"><span className="h-3 w-[3px] bg-current" /><span className="h-3 w-[3px] bg-current" /></span>
-        )}
-      </button>
-      <span className="eyebrow ml-1 text-surface/80">{pad(active + 1)} / {pad(count)}</span>
-    </div>
-  )
-}
-
 function Hero() {
   const [main, since] = hero.headline.split(' — ')
   const count = heroSlides.length
   const [active, setActive] = useState(0)
-  // Autoplay starts off for visitors who prefer reduced motion
-  const [paused, setPaused] = useState(() => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false)
-  const [holding, setHolding] = useState(false)
-  const go = (i) => setActive((i + count) % count)
 
+  // Endless autoplay — wraps from the last slide back to the first
   useEffect(() => {
-    if (paused || holding) return
-    const t = setTimeout(() => setActive((a) => (a + 1) % count), SLIDE_MS)
-    return () => clearTimeout(t)
-  }, [active, paused, holding, count])
+    const t = setInterval(() => setActive((a) => (a + 1) % count), SLIDE_MS)
+    return () => clearInterval(t)
+  }, [count])
 
   return (
-    <section
-      className="relative isolate overflow-hidden bg-night text-surface"
-      aria-roledescription="carousel"
-      aria-label="Star Metal Store showcase"
-      onMouseEnter={() => setHolding(true)}
-      onMouseLeave={() => setHolding(false)}
-      onFocus={() => setHolding(true)}
-      onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setHolding(false)}
-    >
+    <section className="relative isolate overflow-hidden bg-night text-surface" aria-label="Star Metal Store showcase">
       <div className="tex-brushed absolute inset-0 -z-10 opacity-60" />
       {heroSlides.map((s, i) => (
         <img
-          key={s.key}
-          src={sceneSrc(s.key)}
+          key={s.src}
+          src={s.src}
           alt=""
           aria-hidden="true"
-          fetchPriority={i === 0 ? 'high' : undefined}
+          fetchPriority={i === 0 ? 'high' : 'low'}
           decoding="async"
           className={`hero-photo -z-10 origin-right ${s.seam ? 'photo-seam-fade' : ''} transition-[opacity,transform] duration-[1200ms] ease-[var(--ease-weight)] ${
             i === active ? 'scale-100 opacity-100' : 'scale-[1.04] opacity-0'
           }`}
         />
       ))}
-      {/* Soft left-to-right fade: dense behind the copy, gone before the vessels */}
+      {/* Soft left-to-right fade: dense behind the copy, gone before the vessels. Below xl the
+          copy spans over the vessels, so the whole photo is dimmed instead. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(34_35_38/0.9)_0%,rgb(34_35_38/0.74)_14%,rgb(34_35_38/0.5)_25%,rgb(34_35_38/0.25)_35%,rgb(34_35_38/0.08)_43%,rgb(34_35_38/0)_50%)] max-lg:bg-[linear-gradient(90deg,rgb(20_24_27/0.88)_0%,rgb(20_24_27/0.7)_55%,rgb(20_24_27/0.5)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(34_35_38/0.9)_0%,rgb(34_35_38/0.74)_14%,rgb(34_35_38/0.5)_25%,rgb(34_35_38/0.25)_35%,rgb(34_35_38/0.08)_43%,rgb(34_35_38/0)_50%)] max-xl:bg-[linear-gradient(90deg,rgb(20_24_27/0.88)_0%,rgb(20_24_27/0.72)_55%,rgb(20_24_27/0.55)_100%)]"
       />
-      <div className="hero-text container pt-14 pb-36 sm:pt-20 lg:pt-24 lg:pb-44">
+      <div className="hero-text container pt-8 pb-32 sm:pt-20 sm:pb-36 lg:pt-24 lg:pb-44">
         <Reveal>
-          <Eyebrow tone="light" >{since}</Eyebrow>
+          <Eyebrow tone="light" className="max-sm:!text-[0.62rem]">{since}</Eyebrow>
         </Reveal>
      
         <Reveal delay={80}>
-          <h1 className="mt-6 max-w-4xl text-[2.1rem] leading-[1.08] font-bold sm:text-[3rem] lg:text-[3.75rem]">
+          <h1 className="mt-3 max-w-4xl text-[1.5rem] leading-[1.12] font-bold min-[400px]:text-[1.65rem] sm:mt-6 sm:leading-[1.08] sm:text-[3rem] lg:text-[3.4rem] xl:max-w-[38rem] xl:text-[3.25rem] 2xl:max-w-[44rem] 2xl:text-[3.75rem]">
             {main}
             
           </h1>
         </Reveal>
-           <Reveal className='mt-4'>
-          <EyebrowNoBorder tone="light">{footer.taglineLine.slice(0, 3).join(' · ')}</EyebrowNoBorder>
+           <Reveal className='mt-3 sm:mt-4'>
+          <EyebrowNoBorder tone="light" className="max-sm:!text-[0.6rem]">{footer.taglineLine.slice(0, 3).join(' · ')}</EyebrowNoBorder>
         </Reveal>
         
 
-        <div className="mt-5 grid gap-10 lg:grid-cols-12 lg:items-end">
-          <Reveal delay={160} className="lg:col-span-7">
+        {/* Copy and CTAs stay in the left column, clear of the vessels */}
+        <div className="mt-4 max-w-2xl sm:mt-5 xl:max-w-[36rem] 2xl:max-w-[40rem]">
+          <Reveal delay={160}>
             {/* <p className="font-display text-xl leading-snug font-normal text-surface sm:text-[1.6rem]">{hero.subheadline}</p> */}
-            <p className=" max-w-2xl text-[1.02rem] leading-relaxed text-text-inverse-muted">{hero.body}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to="/contact">{hero.primaryCta}</Button>
-              <Button href="#products" variant="ghostLight">{hero.secondaryCta}</Button>
+            <p className="text-[0.86rem] leading-relaxed text-text-inverse-muted sm:text-[1.02rem]">{hero.body}</p>
+            <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-8 sm:flex-nowrap sm:gap-3">
+              <Button to="/contact" className={`sm:whitespace-nowrap ${heroBtn}`}>{hero.primaryCta}</Button>
+              <Button href="#products" variant="ghostLight" className={`sm:whitespace-nowrap ${heroBtn}`}>{hero.secondaryCta}</Button>
             </div>
-          </Reveal>
-          <Reveal delay={240} className="flex lg:col-span-4 lg:col-start-9 lg:justify-end">
-            <HeroControls active={active} count={count} paused={paused} go={go} togglePause={() => setPaused((p) => !p)} />
           </Reveal>
         </div>
       </div>

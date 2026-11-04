@@ -28,18 +28,18 @@ function ScrollManager() {
 
 function Logo({ className = '' }) {
   return (
-    <Link to="/" className={`flex min-w-0 items-center gap-3 ${className}`} aria-label={`${business.name} — Home`}>
-      <img src={logo} alt="" width="1057" height="573" className="h-9 w-auto sm:h-12" />
-      <span className="border-l border-line pl-3 leading-none">
-        <span translate="no" className="notranslate block font-display text-[1rem] font-bold tracking-[0.02em] whitespace-nowrap text-secondary uppercase sm:text-[1.15rem]">{business.name}</span>
+    <Link to="/" className={`flex min-w-0 items-center gap-2 min-[360px]:gap-3 ${className}`} aria-label={`${business.name} — Home`}>
+      <img src={logo} alt="" width="1057" height="573" className="h-8 w-auto min-[360px]:h-9 sm:h-12" />
+      <span className="border-l border-line pl-2 leading-none min-[360px]:pl-3">
+        <span translate="no" className="notranslate block font-display text-[0.85rem] font-bold tracking-[0.02em] whitespace-nowrap text-secondary uppercase min-[360px]:text-[1rem] sm:text-[1.15rem]">{business.name}</span>
         <span className="eyebrow mt-1.5 hidden !text-[0.62rem] !tracking-[0.18em] text-accent sm:block">Pondicherry · Est. 1988</span>
       </span>
     </Link>
   )
 }
 
-/* EN / தமிழ் switch — floats at the bottom-right of every page; reloads into Google's page
-   translation (see translate.js). */
+/* EN / தமிழ் switch — sits in the utility strip (a floating widget covered hero CTAs on small
+   screens); reloads into Google's page translation (see translate.js). */
 function LanguageSwitch() {
   const [lang] = useState(getLang)
   const opt = (code, label, name) => (
@@ -49,7 +49,7 @@ function LanguageSwitch() {
       aria-pressed={lang === code}
       aria-label={name}
       onClick={() => setLang(code)}
-      className={`min-w-11 rounded-sm px-3 text-[0.85rem] font-semibold transition-colors ${code === 'ta' ? "font-['Anek_Tamil',sans-serif]" : 'font-display tracking-[0.04em]'} ${
+      className={`min-w-9 rounded-xs px-2 text-[0.75rem] leading-none font-semibold transition-colors ${code === 'ta' ? "font-['Anek_Tamil',sans-serif]" : 'font-display tracking-[0.04em]'} ${
         lang === code ? 'bg-primary text-white' : 'text-surface/80 hover:bg-white/10 hover:text-white'
       }`}
     >
@@ -61,7 +61,7 @@ function LanguageSwitch() {
       role="group"
       aria-label="Language"
       translate="no"
-      className="notranslate fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex h-11 gap-1 rounded-md border border-white/10 bg-secondary/95 p-1 shadow-[0_12px_28px_-10px_rgb(0_0_0/0.55)] backdrop-blur sm:right-6 sm:bottom-6"
+      className="notranslate flex h-7 shrink-0 gap-0.5 rounded-sm border border-white/10 bg-white/5 p-0.5"
     >
       {opt('en', 'EN', 'English')}
       {opt('ta', 'தமிழ்', 'Tamil')}
@@ -127,14 +127,14 @@ function Header() {
           <p translate="no" className="notranslate flex min-w-0 items-center gap-2">
             <Icon name="phone" size={14} className="shrink-0 text-accent-soft" />
             {business.phone.numbers.map((n, i) => (
-              <span key={n.tel} className="flex items-center gap-2 whitespace-nowrap">
+              <span key={n.tel} className={`flex items-center gap-2 whitespace-nowrap ${i > 0 ? 'max-[399px]:hidden' : ''}`}>
                 {i > 0 && <span aria-hidden="true" className="text-white/30">/</span>}
                 <a href={`tel:${n.tel}`} className="transition-colors hover:text-accent-soft">{n.display}</a>
               </span>
             ))}
           </p>
-          <div className="hidden items-center gap-6 md:flex">
-            <a translate="no" href={`mailto:${business.email.value}`} className="notranslate flex items-center gap-2 transition-colors hover:text-accent-soft">
+          <div className="flex items-center gap-6">
+            <a translate="no" href={`mailto:${business.email.value}`} className="notranslate hidden items-center gap-2 transition-colors hover:text-accent-soft md:flex">
               <Icon name="mail" size={14} className="text-accent-soft" />
               {business.email.value}
             </a>
@@ -142,6 +142,7 @@ function Header() {
               <Icon name="pin" size={14} className="text-accent-soft" />
               {business.address.lines.join(', ')}
             </p>
+            <LanguageSwitch />
           </div>
         </div>
       </div>
@@ -153,7 +154,7 @@ function Header() {
       >
         <div className="container flex h-[4.5rem] items-center justify-between gap-4 lg:gap-6">
           <Logo />
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Primary">
             {nav.map((n) =>
               n.label === 'Products' ? (
                 <ProductsMenu key={n.label} />
@@ -165,7 +166,7 @@ function Header() {
             )}
           </nav>
           <div className="flex items-center gap-2">
-            <span className="hidden sm:block"><Button to="/contact" className="!min-h-11 !px-5">
+            <span className="hidden sm:block"><Button to="/contact" className="!min-h-11 !px-5 whitespace-nowrap">
               {hero.primaryCta}
             </Button></span>
             <button
@@ -310,7 +311,6 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <LanguageSwitch />
     </div>
   )
 }

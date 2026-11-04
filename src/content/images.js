@@ -1,4 +1,5 @@
-// Visual assets — every file lives in public/images and is drawn by scripts/generate-images.mjs.
+// Visual assets — every file lives in public/images. Most are drawn by scripts/generate-images.mjs;
+// product entries with a .jpeg file are real photos from public/images/products/real assets.
 // Keys mirror content: category slugs and product names from categories.js.
 
 const base = '/images'
@@ -29,45 +30,51 @@ export const productImages = {
     'Chopping Boards': ['colour-coded-commercial-chopping-boards', 'Stack of colour-coded commercial chopping boards and a wooden board'],
   },
   'tea-shop': {
-    'Tea Boilers': ['stainless-steel-tea-boiler-brass-tap', 'Stainless steel tea boiler with a brass tap'],
-    'Milk Boilers': ['heavy-gauge-milk-boiler', 'Wide heavy-gauge stainless steel milk boiler with tap and side handles'],
+    'Tea Boilers': ['tea-boiler.jpeg', 'Stainless steel electric tea boiler with a tap, water-level gauge and temperature dial'],
+    'Milk Boilers': ['milk-boiler.jpeg', 'Wide stainless steel milk boiler with a tap and side handles'],
     '3-Burner Gas Stoves': ['commercial-three-burner-gas-stove', 'Commercial three-burner gas stove with cast-iron burners'],
     '2-Burner Gas Stoves': ['commercial-two-burner-gas-stove', 'Commercial two-burner gas stove with cast-iron burners'],
-    'Copper Boilers': ['traditional-copper-tea-boiler', 'Traditional hammered copper boiler with brass tap'],
+    'Copper Boilers': ['copper-tea-boiler.jpeg', 'Traditional copper tea boiler with a chimney and side handles'],
   },
   'restaurant-kitchen': {
-    'Commercial Gas Stoves (Big Size)': ['high-pressure-commercial-gas-range', 'High-pressure commercial gas range with a large stockpot on the burner'],
-    'Hindolium Dabara Sets': ['hindolium-dabara-tumbler-sets', 'Hindolium dabara and tumbler sets'],
-    'Idly Pots — Standard Round': ['standard-round-idly-pot-with-plates', 'Round stainless steel idly pot beside a stack of idly plates'],
+    'Commercial Gas Stoves (Big Size)': ['COMMERCIAL GAS STOVES.jpeg', 'Stainless steel three-burner commercial gas range on a stand with an undershelf'],
+    'Hindolium Dabara Sets': ['HINDOLIUM DABARA.jpeg', 'Hindolium dabara vessel with ring handles'],
+    'Idly Pots — Standard Round': ['IDLY POT.jpeg', 'Round idly pot with a perforated idly plate on top'],
     'Round Idly Pots': ['heavy-gauge-round-idly-steamer', 'Heavy-gauge round idly pot with a tower of idly plates'],
-    'Square Idly Pots': ['square-idly-pot-and-tray', 'Square stainless steel idly pot with a square idly tray'],
+    'Square Idly Pots': ['TRAY IDLY POT.jpeg', 'Square tray-type idly pot with a stack of slide-in idly trays'],
+    'Stock Pots': ['STOCK POT.jpeg', 'Stainless steel stock pot with a glass lid and side handles on a wooden table'],
+    'Work Tables': ['WORK TABLE.jpeg', 'Stainless steel work table with two undershelves'],
   },
   'catering-equipment': {
-    'Big-Size Carriers (Catering Carriers)': ['insulated-catering-food-carriers', 'Large insulated stainless steel catering carriers with clamp lids'],
-    'Storage Drums': ['stainless-steel-storage-drums', 'Two stainless steel storage drums with lids'],
-    'Dabara Sets (Catering Grade)': ['catering-grade-steel-dabara-sets', 'Nested stacks of catering-grade steel dabaras and tumblers'],
-    'Anda (Serving/Transfer Vessels)': ['brass-anda-serving-vessel', 'Large hammered brass anda with a smaller steel anda'],
-    'Anda Tables / Service Tables': ['stainless-steel-anda-service-table', 'Stainless steel service table with an anda and serving bucket'],
+    'Big-Size Carriers (Catering Carriers)': ['CATERING CARRIERS.jpeg', 'Two tall multi-tier stainless steel catering carriers in a carrying frame'],
+    'Storage Drums': ['STORAGE DRUM.jpeg', 'Two stainless steel storage drums, 15 and 20 litre, with lids'],
+    'Dabara Sets (Catering Grade)': ['DABARA SETS.jpeg', 'Stack of large catering-grade dabaras in graded sizes'],
+    'Anda (Serving/Transfer Vessels)': ['ANDA.jpeg', 'Large straight-sided metal anda vessel'],
+    'Anda Tables / Service Tables': ['MARRIAGE HALL TABLE.jpeg', 'Long steel-topped folding service table on a blue frame'],
+    'Cotton Candy Machines': ['COTTON CANDY MACHINE.jpeg', 'Pink cotton candy machine with a stainless steel spinning bowl and a cone of pink candy floss'],
+    'Popcorn Machines': ['POP CORN MACHINE.jpeg', 'Red-roofed popcorn machine with a glass cabinet and steel kettle'],
+    'Biryani Dabara / Handi': ['BIRYANI DABARA.jpeg', 'Stack of stainless steel biryani handis in graded sizes'],
   },
   'corporate-cafeteria': {
-    'Plates (Tiffler / Meal Plates)': ['compartment-tiffler-meal-plates', 'Stainless steel compartment tiffler meal plates'],
-    Tumblers: ['stainless-steel-tumblers-bulk', 'Rows of stainless steel tumblers and a nested stack'],
-    'Cutlery Sets': ['commercial-stainless-cutlery-set', 'Stainless steel spoons and forks in a cutlery holder'],
+    'Plates (Tiffler / Meal Plates)': ['MEALS PLATE.jpeg', 'Stainless steel compartment meal plate'],
+    Tumblers: ['TUMBLERS.jpeg', 'Four stainless steel tumblers in graded sizes'],
+    'Cutlery Sets': ['CUTLERY SET.jpeg', 'Stainless steel fork, knife, tablespoon and teaspoon'],
     'Lunch Plates (Full Plate)': ['full-size-steel-lunch-plates', 'Stack of full-size stainless steel lunch plates'],
-    'Bain-Marie Units': ['four-pan-bain-marie-counter', 'Four-pan stainless steel bain-marie counter with sneeze guard'],
-    'Tables and Chairs': ['canteen-steel-table-and-stools', 'Stainless steel canteen table with two stools'],
+    'Bain-Marie Units': ['BAIN MARIE.jpeg', 'Six-well stainless steel gas-operated bain-marie counter'],
+    'Tables and Chairs': ['TABLE AND CHAIR.jpeg', 'Canteen dining table with four steel-frame chairs'],
   },
   machinery: {
-    'Atta Machines (Flour Grinders)': ['commercial-atta-flour-mill', 'Commercial atta flour mill with hopper, motor and flour sack'],
-    'Vegetable-Cutting Machines': ['commercial-vegetable-cutting-machine', 'Commercial vegetable-cutting machine with sliced vegetables'],
-    'Mixer Grinders (Commercial)': ['heavy-duty-commercial-mixer-grinder', 'Heavy-duty commercial mixer grinder with three steel jars'],
-    'Tilting Grinders (Wet Grinders)': ['tilting-wet-grinder-idly-dosa-batter', 'Tilting wet grinder with granite rollers and batter'],
+    'Atta Machines (Flour Grinders)': ['ATTA KNEADER.jpeg', 'Commercial atta kneading machine with a motor and stainless steel bowl'],
+    'Vegetable-Cutting Machines': ['VEGETABLE CUTTING MACHINE.jpeg', 'Red and white commercial vegetable-cutting machine with a feed chute'],
+    'Mixer Grinders (Commercial)': ['MIXER GRINDER.jpeg', 'Heavy-duty commercial mixer grinder with a tall steel jar, beside bowls of ground spices'],
+    'Tilting Grinders (Wet Grinders)': ['TILTING GRINDER.jpeg', 'Stainless steel commercial tilting wet grinder on a steel stand'],
     'Coriander/Masala Grinder': ['commercial-masala-spice-pulveriser', 'Commercial masala pulveriser with ground chilli powder'],
   },
   'hawkins-cookers': {
-    'Hawkins Pressure Cookers': ['aluminium-pressure-cookers-range', 'Aluminium pressure cookers in three sizes'],
-    'Hawkins Cookware': ['hard-anodised-cookware-set', 'Hard-anodised kadai with glass lid, frying pan and tawa'],
-    'Spare Parts (Genuine)': ['pressure-cooker-spare-parts-gaskets-weights', 'Pressure cooker gaskets, whistle weights, handles and safety valves'],
+    'Hawkins Pressure Cookers': ['hawkins-bigboy-cookers1.jpeg', 'Hawkins BigBoy pressure cookers in 14, 18 and 22 litre sizes'],
+    'Hawkins Cookers (1.5–12 Litre)': ['HAWKINS COOKER.jpeg', 'Hawkins pressure cooker size chart showing models from 1.5 to 12 litres'],
+    'Hawkins Cookware': ['HAWKINS COOKWARE.jpeg', 'Hawkins Futura hard-anodised cookware: saucepan, tawa and deep-fry pan with lids'],
+    'Spare Parts (Genuine)': ['HAWKINS SPARE.jpeg', 'Genuine Hawkins gaskets and spare parts in packaging, with the hologram to check for'],
   },
   'bakery-cafe': {
     'Planetary Mixers': ['commercial-planetary-mixer', 'Commercial planetary mixer with stainless steel bowl'],
@@ -85,7 +92,10 @@ export const productImages = {
 
 export const productImage = (slug, name) => {
   const [file, alt] = productImages[slug][name]
-  return { src: `${base}/products/${file}.webp`, alt }
+  // Real photos vary in shape and may have product detail near the edges, so they are fitted, never cropped.
+  return file.endsWith('.jpeg')
+    ? { src: encodeURI(`${base}/products/real assets/${file}`), alt, fit: 'bg-white object-contain' }
+    : { src: `${base}/products/${file}.webp`, alt, fit: 'object-cover' }
 }
 
 // Page-level scenes. alt '' marks a purely decorative background.

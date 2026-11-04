@@ -83,6 +83,8 @@ export const categories = [
       { name: 'Idly Pots — Standard Round', desc: 'Round idly pots in commercial sizes. Multiple tray configurations available for high-volume idly production.' },
       { name: 'Round Idly Pots', desc: 'Heavy-gauge round idly pots — standard configuration for South Indian restaurant kitchens. Sized for 24, 48, and higher count batches.' },
       { name: 'Square Idly Pots', desc: 'Square-format idly pots — preferred where counter space is a constraint or where specific batch sizes are required. Stacks efficiently for storage.' },
+      { name: 'Stock Pots', desc: 'Stainless steel stock pots with lids — for soups, gravies, and stocks in a busy restaurant kitchen.' },
+      { name: 'Work Tables', desc: 'Stainless steel work tables with undershelves — a sturdy prep surface with storage below for kitchen prep stations.' },
     ],
     note: {
       heading: 'Buyer Note',
@@ -119,6 +121,9 @@ export const categories = [
         pending: 'Specific configurations to be confirmed with our team.',
       },
       { name: 'Anda Tables / Service Tables', desc: 'Heavy-duty service tables for catering setups. Designed for stability under load during function service.' },
+      { name: 'Cotton Candy Machines', desc: 'Cotton candy machines for live snack counters at weddings, functions, and events.' },
+      { name: 'Popcorn Machines', desc: 'Popcorn machines with glass display cabinets — for live snack counters at functions, events, and fairs.' },
+      { name: 'Biryani Dabara / Handi', desc: 'Biryani handis for hotel, restaurant, and catering supply — for cooking and serving biryani in bulk. Available in all sizes.' },
     ],
     note: {
       heading: 'Buyer Note',
@@ -211,6 +216,7 @@ export const categories = [
     ],
     products: [
       { name: 'Hawkins Pressure Cookers', desc: 'Full range of Hawkins pressure cookers — in multiple capacities suited for commercial and institutional use. Genuine products, bulk pricing available.' },
+      { name: 'Hawkins Cookers (1.5–12 Litre)', desc: 'Hawkins pressure cookers from 1.5 to 12 litres — smaller capacities for side dishes, small batches, and individual kitchen stations.' },
       { name: 'Hawkins Cookware', desc: "Hawkins branded cookware range — pans, pots, and vessels from the manufacturer's cookware line." },
       { name: 'Spare Parts (Genuine)', desc: 'Genuine Hawkins spare parts — gaskets, weights, handles, and other service components. Stocking genuine parts means longer equipment life and proper pressure safety maintenance.' },
     ],

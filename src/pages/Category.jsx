@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
-import { CtaBand, PageHero } from '../components/PageHero'
+import { CtaBand, PageHero, heroBtn } from '../components/PageHero'
 import { Button, Eyebrow, Pending, Reveal, SectionHead, Stamp } from '../components/ui'
 import { usePageMeta } from '../components/usePageMeta'
 import { categories, categoryBySlug } from '../content/categories'
@@ -8,6 +8,11 @@ import { hero } from '../content/home'
 import { categoryBanner, productImage } from '../content/images'
 
 const pad = (n) => String(n).padStart(2, '0')
+
+function ProductImage({ slug, name, className }) {
+  const { fit, ...img } = productImage(slug, name)
+  return <img {...img} width="800" height="800" loading="lazy" decoding="async" className={`${fit} ${className}`} />
+}
 
 function ProductLedger({ c, enquireTo }) {
   const [featured, ...rest] = c.products
@@ -27,14 +32,11 @@ function ProductLedger({ c, enquireTo }) {
         {featured && (
           <Reveal className="mt-10">
             <article className="group grid overflow-hidden rounded-md border border-line bg-white shadow-plate transition-shadow duration-300 hover:shadow-lift lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-              <div className="relative overflow-hidden bg-surface">
-                <img
-                  {...productImage(c.slug, featured.name)}
-                  width="800"
-                  height="800"
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.04] lg:aspect-auto lg:min-h-[30rem]"
+              <div className="relative aspect-square w-full overflow-hidden bg-surface sm:aspect-[4/3] lg:aspect-square">
+                <ProductImage
+                  slug={c.slug}
+                  name={featured.name}
+                  className="h-full w-full transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.04]"
                 />
               </div>
               <div className="relative flex flex-col justify-center p-6 sm:p-10 lg:p-14">
@@ -59,14 +61,11 @@ function ProductLedger({ c, enquireTo }) {
                 className="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
               >
                 <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-white shadow-plate transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-weight)] hover:-translate-y-1 hover:border-secondary/25 hover:shadow-lift">
-                  <div className="relative overflow-hidden bg-surface">
-                    <img
-                      {...productImage(c.slug, p.name)}
-                      width="800"
-                      height="800"
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-square w-full object-cover transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.06]"
+                  <div className="relative aspect-square w-full overflow-hidden bg-surface">
+                    <ProductImage
+                      slug={c.slug}
+                      name={p.name}
+                      className="h-full w-full transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.06]"
                     />
                     <NumberChip n={i + 2} />
                   </div>
@@ -145,9 +144,9 @@ export default function Category({ slug }) {
         image={categoryBanner(slug)}
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Products', to: '/#products' }, { label: c.card.title }]}
       >
-        <Reveal delay={150} className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button to={enquireTo}>{hero.primaryCta}</Button>
-          <Button href="#range" variant="ghostLight">{c.card.summary}</Button>
+        <Reveal delay={150} className="mt-5 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
+          <Button to={enquireTo} className={heroBtn}>{hero.primaryCta}</Button>
+          <Button href="#range" variant="ghostLight" className={heroBtn} title={c.card.summary}>View the Range</Button>
         </Reveal>
       </PageHero>
 

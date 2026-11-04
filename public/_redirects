@@ -1,0 +1,3 @@
+# Netlify: serve the SPA for every route so deep links (e.g. /products/tea-shop) don't 404.
+# Real files (assets, images, sitemap.xml, robots.txt) are served first; this only catches the rest.
+/*    /index.html   200
