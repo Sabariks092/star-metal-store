@@ -69,6 +69,27 @@ function LanguageSwitch() {
   )
 }
 
+/* Floating WhatsApp chat — opens a pre-filled bulk enquiry via the WhatsApp click-to-chat API. */
+function WhatsAppButton() {
+  const { number, enquiry } = business.whatsapp
+  const href = `https://wa.me/${number}?text=${encodeURIComponent(enquiry)}`
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with us on WhatsApp"
+      className="group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex items-center gap-2 rounded-pill bg-[#25d366] p-3.5 text-white shadow-[0_12px_28px_-8px_rgb(37_211_102/0.6),0_4px_10px_-4px_rgb(0_0_0/0.3)] ring-4 ring-white/70 transition-transform duration-200 hover:scale-105 sm:right-6 sm:bottom-6"
+    >
+      <span aria-hidden="true" className="absolute inset-0 -z-10 animate-ping rounded-pill bg-[#25d366] opacity-25 motion-reduce:hidden" />
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" fill="currentColor">
+        <path d="M16.04 3C8.86 3 3.02 8.83 3.02 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A13 13 0 0 0 16.04 29C23.2 29 29 23.17 29 16S23.2 3 16.04 3Zm0 23.8c-2 0-3.95-.54-5.65-1.55l-.4-.24-3.96 1.04 1.06-3.86-.26-.4A10.77 10.77 0 0 1 5.2 16c0-5.96 4.86-10.8 10.84-10.8 5.97 0 10.8 4.84 10.8 10.8 0 5.97-4.84 10.8-10.8 10.8Zm5.93-8.08c-.32-.16-1.92-.95-2.22-1.06-.3-.11-.51-.16-.73.16-.21.32-.84 1.06-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.5-2.62-1.6-.97-.87-1.62-1.93-1.81-2.26-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.56-.08-.16-.73-1.76-1-2.4-.26-.63-.53-.55-.73-.56h-.62c-.21 0-.56.08-.86.4-.3.33-1.13 1.1-1.13 2.7 0 1.58 1.16 3.12 1.32 3.33.16.22 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.25 1.48.21 2.03.13.62-.09 1.92-.79 2.19-1.54.27-.76.27-1.4.19-1.54-.08-.13-.3-.21-.62-.37Z" />
+      </svg>
+      <span className="label-wide hidden pr-1 text-[0.8rem] lg:block">WhatsApp</span>
+    </a>
+  )
+}
+
 const navLinkCls = ({ isActive }) =>
   `relative px-1 py-2 label-wide text-[0.85rem] transition-colors hover:text-primary after:absolute after:inset-x-1 after:-bottom-0.5 after:h-[2px] after:bg-primary after:transition-transform ${
     isActive ? 'text-primary after:scale-x-100' : 'text-secondary after:scale-x-0'
@@ -148,7 +169,7 @@ function Header() {
       </div>
 
       <header
-        className={`sticky top-0 z-40 border-b border-line bg-surface-raised transition-shadow lg:top-9 ${
+        className={`sticky top-0 z-40 border-b border-line bg-surface-raised transition-shadow max-lg:bg-surface-raised/92 max-lg:backdrop-blur-md lg:top-9 ${
           scrolled ? 'shadow-lift' : ''
         }`}
       >
@@ -227,12 +248,24 @@ function Header() {
   )
 }
 
+/* Footer list marker: brass arrow that turns red and nudges right on hover */
+function FooterBullet() {
+  return (
+    <Icon
+      name="arrow"
+      size={14}
+      strokeWidth={2.25}
+      className="mt-[0.2em] shrink-0 text-accent transition-[transform,color] duration-200 group-hover:translate-x-0.5 group-hover:text-primary"
+    />
+  )
+}
+
 function Footer() {
   return (
     <footer className="bg-ink text-text-inverse-muted">
       <div className="h-1 bg-primary" />
       <div className="container grid gap-10 py-14 sm:gap-12 sm:py-16 md:grid-cols-12">
-        <div className="md:col-span-5">
+        <div className="md:col-span-5 md:row-span-2">
           <div className="inline-block rounded-sm bg-white px-3 py-2">
             <img src={logo} alt={business.name} width="1057" height="573" className="h-12 w-auto" />
           </div>
@@ -261,7 +294,10 @@ function Footer() {
           <ul className="mt-5 space-y-3">
             {nav.map((n) => (
               <li key={n.label}>
-                <Link to={n.to} className="font-display text-[1.02rem] font-medium tracking-[0.04em] text-surface uppercase transition-colors hover:text-accent-soft">{n.label}</Link>
+                <Link to={n.to} className="group flex items-start gap-2.5 text-[0.95rem] leading-snug text-surface/90 transition-colors hover:text-accent-soft">
+                  <FooterBullet />
+                  {n.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -273,17 +309,16 @@ function Footer() {
             {categories.map((c) => (
               <li key={c.slug}>
                 <Link to={`/products/${c.slug}`} className="group flex items-start gap-2.5 text-[0.95rem] leading-snug text-surface/90 transition-colors hover:text-accent-soft">
-                  <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 bg-accent" />
+                  <FooterBullet />
                   {c.formOption}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-      </div>
 
-      <div className="border-t border-line-dark">
-        <div className="container flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
+        {/* Tagline row, under the Navigate + Product Categories columns */}
+        <div className="border-t border-line-dark pt-6 md:col-span-7 md:col-start-6">
           <p className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 !text-[0.68rem]">
             {footer.taglineLine.map((t, i) => (
               <span key={t} className="flex items-center gap-3">
@@ -292,7 +327,24 @@ function Footer() {
               </span>
             ))}
           </p>
-          <p className="text-xs">© {YEAR} {business.name}</p>
+        </div>
+      </div>
+
+      <div className="border-t border-line-dark">
+        <div className="container flex flex-col gap-2 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+          <p>© {YEAR} {business.name}</p>
+          <p>
+            Online presence powered by{' '}
+            <a
+              href="https://ayntech.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              translate="no"
+              className="notranslate font-semibold text-surface transition-colors hover:text-accent-soft"
+            >
+              Ayntech
+            </a>
+          </p>
         </div>
       </div>
     </footer>
@@ -311,6 +363,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

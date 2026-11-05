@@ -53,8 +53,8 @@ function WhatWeDo() {
       <div className="container grid gap-12 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">
           <SectionHead eyebrow="What We Do" title={whatWeDo.heading} />
-          {whatWeDo.body.map((p) => <p key={p} className="mt-6 text-lg leading-relaxed text-text-muted">{p}</p>)}
-          <p className="mt-6 border-l-[3px] border-primary pl-5 font-display text-xl leading-snug font-medium text-secondary">{whatWeDo.closing}</p>
+          {whatWeDo.body.map((p) => <p key={p} className="mt-5 text-[0.95rem] leading-relaxed text-text-muted sm:mt-6 sm:text-lg">{p}</p>)}
+          <p className="mt-6 border-l-[3px] border-primary pl-4 font-display text-[1.05rem] leading-snug sm:pl-5 sm:text-xl font-medium text-secondary">{whatWeDo.closing}</p>
           <img
             src={sceneSrc('storeShelves')}
             alt={scenes.storeShelves.alt}
@@ -105,7 +105,7 @@ function Approach() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5 lg:col-start-8">
           <div className="rounded-sm border border-line-dark border-t-[3px] border-t-accent bg-ink/50 p-6 sm:p-8">
-            <p className="text-lg leading-relaxed text-surface"><Rich text={approach.listIntro} strongClass="font-bold text-accent-soft" /></p>
+            <p className="text-[0.95rem] leading-relaxed text-surface sm:text-lg"><Rich text={approach.listIntro} strongClass="font-bold text-accent-soft" /></p>
             <ul className="mt-6 space-y-4">
               {approach.list.map((item) => (
                 <li key={item} className="flex gap-4">
@@ -135,7 +135,7 @@ function Numbers() {
             <Reveal key={s.label} delay={(i % 3) * 90} className="border-r border-b border-line p-5 sm:p-8">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className={`block font-display text-[2.6rem] leading-[0.95] font-semibold sm:text-6xl lg:text-7xl ${i === 0 ? 'text-primary' : 'text-secondary'}`}>
+                <span className={`block font-display text-[2.1rem] leading-[0.95] font-semibold sm:text-6xl lg:text-7xl ${i === 0 ? 'text-primary' : 'text-secondary'}`}>
                   {s.value}
                 </span>
                 <span className="mt-4 block max-w-[16rem] text-sm leading-snug text-text-muted sm:text-base" aria-hidden="true">{s.label}</span>
@@ -164,7 +164,7 @@ function Values() {
                 </span>
                 <span className="eyebrow text-accent">Value {pad(i + 1)}</span>
               </div>
-              <h3 className="mt-6 text-[1.5rem] leading-snug font-semibold text-secondary">{v.title}</h3>
+              <h3 className="mt-5 text-[1.2rem] leading-snug font-semibold text-secondary sm:mt-6 sm:text-[1.5rem]">{v.title}</h3>
               <p className="mt-3 leading-relaxed text-text-muted">{v.body}</p>
             </Reveal>
           ))}

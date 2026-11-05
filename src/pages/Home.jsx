@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
-import { Button, Eyebrow,EyebrowNoBorder , Pending, Reveal, SectionHead, Star } from '../components/ui'
+import GoogleReviews from '../components/GoogleReviews'
+import { Button, Eyebrow,EyebrowNoBorder , Reveal, SectionHead, Star } from '../components/ui'
 import { usePageMeta } from '../components/usePageMeta'
-import { heroBtn } from '../components/PageHero'
-import { hero, trustBar, whoWeServe, productsSection, whyUs, location, testimonials } from '../content/home'
+import { hero, trustBar, whoWeServe, productsSection, whyUs, location } from '../content/home'
 import { categories } from '../content/categories'
 import { business, footer, meta } from '../content/site'
 import { categoryBanner, categoryImages, categoryThumb, scenes, sceneSrc } from '../content/images'
@@ -41,7 +41,7 @@ function Hero() {
   }, [count])
 
   return (
-    <section className="relative isolate overflow-hidden bg-night text-surface" aria-label="Star Metal Store showcase">
+    <section className="relative isolate overflow-hidden bg-night text-surface max-sm:flex max-sm:min-h-[min(38rem,84svh)] max-sm:flex-col max-sm:justify-end" aria-label="Star Metal Store showcase">
       <div className="tex-brushed absolute inset-0 -z-10 opacity-60" />
       {heroSlides.map((s, i) => (
         <img
@@ -57,35 +57,48 @@ function Hero() {
         />
       ))}
       {/* Soft left-to-right fade: dense behind the copy, gone before the vessels. Below xl the
-          copy spans over the vessels, so the whole photo is dimmed instead. */}
+          copy spans over the vessels, so the whole photo is dimmed instead. Phones get a bottom-up
+          fade, so the photo stays clear above the copy. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(34_35_38/0.9)_0%,rgb(34_35_38/0.74)_14%,rgb(34_35_38/0.5)_25%,rgb(34_35_38/0.25)_35%,rgb(34_35_38/0.08)_43%,rgb(34_35_38/0)_50%)] max-xl:bg-[linear-gradient(90deg,rgb(20_24_27/0.88)_0%,rgb(20_24_27/0.72)_55%,rgb(20_24_27/0.55)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(34_35_38/0.9)_0%,rgb(34_35_38/0.74)_14%,rgb(34_35_38/0.5)_25%,rgb(34_35_38/0.25)_35%,rgb(34_35_38/0.08)_43%,rgb(34_35_38/0)_50%)] max-xl:bg-[linear-gradient(90deg,rgb(20_24_27/0.88)_0%,rgb(20_24_27/0.72)_55%,rgb(20_24_27/0.55)_100%)] max-sm:bg-[linear-gradient(180deg,rgb(20_24_27/0.1)_0%,rgb(20_24_27/0.05)_28%,rgb(20_24_27/0.55)_52%,rgb(20_24_27/0.9)_74%,rgb(20_24_27/0.97)_100%)]"
       />
-      <div className="hero-text container pt-8 pb-32 sm:pt-20 sm:pb-36 lg:pt-24 lg:pb-44">
+      <div className="hero-text container pt-40 pb-20 sm:pt-20 sm:pb-36 lg:pt-24 lg:pb-44">
         <Reveal>
           <Eyebrow tone="light" className="max-sm:!text-[0.62rem]">{since}</Eyebrow>
         </Reveal>
-     
+
         <Reveal delay={80}>
-          <h1 className="mt-3 max-w-4xl text-[1.5rem] leading-[1.12] font-bold min-[400px]:text-[1.65rem] sm:mt-6 sm:leading-[1.08] sm:text-[3rem] lg:text-[3.4rem] xl:max-w-[38rem] xl:text-[3.25rem] 2xl:max-w-[44rem] 2xl:text-[3.75rem]">
+          <h1 className="mt-3 max-w-4xl text-[1.65rem] leading-[1.12] font-bold max-[359px]:text-[1.45rem] sm:mt-6 sm:text-[3rem] sm:leading-[1.08] lg:text-[3.4rem] xl:max-w-[38rem] xl:text-[3.25rem] 2xl:max-w-[44rem] 2xl:text-[3.75rem]">
             {main}
-            
           </h1>
         </Reveal>
-           <Reveal className='mt-3 sm:mt-4'>
-          <EyebrowNoBorder tone="light" className="max-sm:!text-[0.6rem]">{footer.taglineLine.slice(0, 3).join(' · ')}</EyebrowNoBorder>
+        <Reveal className="mt-4 max-sm:hidden">
+          <EyebrowNoBorder tone="light">{footer.taglineLine.slice(0, 3).join(' · ')}</EyebrowNoBorder>
         </Reveal>
-        
 
         {/* Copy and CTAs stay in the left column, clear of the vessels */}
-        <div className="mt-4 max-w-2xl sm:mt-5 xl:max-w-[36rem] 2xl:max-w-[40rem]">
+        <div className="mt-3 max-w-2xl sm:mt-5 xl:max-w-[36rem] 2xl:max-w-[40rem]">
           <Reveal delay={160}>
-            {/* <p className="font-display text-xl leading-snug font-normal text-surface sm:text-[1.6rem]">{hero.subheadline}</p> */}
-            <p className="text-[0.86rem] leading-relaxed text-text-inverse-muted sm:text-[1.02rem]">{hero.body}</p>
-            <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-8 sm:flex-nowrap sm:gap-3">
-              <Button to="/contact" className={`sm:whitespace-nowrap ${heroBtn}`}>{hero.primaryCta}</Button>
-              <Button href="#products" variant="ghostLight" className={`sm:whitespace-nowrap ${heroBtn}`}>{hero.secondaryCta}</Button>
+            {/* Phones get the one-line subheadline; the full body from sm up */}
+            <p className="max-w-md text-[0.92rem] leading-relaxed text-text-inverse-muted sm:hidden">{hero.subheadline}</p>
+            <p className="text-[1.02rem] leading-relaxed text-text-inverse-muted max-sm:hidden">{hero.body}</p>
+            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:flex-row sm:gap-3">
+              <Button
+                to="/contact"
+                className="sm:whitespace-nowrap max-sm:!min-h-11 max-sm:!gap-1.5 max-sm:!px-3 max-sm:!text-[0.78rem] max-sm:shadow-[0_10px_24px_-10px_rgb(224_32_40/0.7)]"
+              >
+                {hero.primaryCta}
+              </Button>
+              <Button
+                href="#products"
+                variant="ghostLight"
+                arrow={false}
+                className="max-sm:!min-h-11 max-sm:!px-3 max-sm:!text-[0.78rem] max-sm:bg-white/5 max-sm:backdrop-blur-sm sm:hidden"
+              >
+                {hero.secondaryCta}
+              </Button>
+              <Button href="#products" variant="ghostLight" className="max-sm:hidden sm:whitespace-nowrap">{hero.secondaryCta}</Button>
             </div>
           </Reveal>
         </div>
@@ -95,24 +108,53 @@ function Hero() {
   )
 }
 
+/* Phones: the trust points as a swipeable row of cards over the hero's foot */
+function TrustCarousel() {
+  return (
+    <section aria-label="Why buyers trust us" className="relative z-10 -mt-12 sm:hidden">
+      <Reveal>
+        <ul className="flex snap-x snap-mandatory scroll-px-[var(--space-gutter)] gap-3 overflow-x-auto px-[var(--space-gutter)] pt-1 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {trustBar.map((t, i) => (
+            <li
+              key={t.strong}
+              className="flex w-[72%] max-w-[16rem] shrink-0 snap-start flex-col gap-3 rounded-md border-t-[3px] border-primary bg-white p-4 shadow-[0_18px_36px_-20px_rgb(34_35_38/0.55)] ring-1 ring-line"
+            >
+              <span className="flex items-center justify-between">
+                <span className="grid h-10 w-10 place-items-center rounded-md bg-gradient-to-b from-[#ee3a41] to-primary-deep text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.3)]">
+                  <Icon name={trustIcons[i]} size={21} />
+                </span>
+                <span className="font-display text-[1.6rem] leading-none font-bold text-surface-sunk">{pad(i + 1)}</span>
+              </span>
+              <span className="flex flex-col gap-1">
+                <span className="font-display text-[1.02rem] leading-tight font-semibold text-secondary">{t.strong}</span>
+                <span className="eyebrow !text-[0.64rem] !tracking-[0.1em] text-text-muted">{t.rest}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+    </section>
+  )
+}
+
 function TrustBar() {
   return (
-    <section aria-label="Why buyers trust us" className="relative z-10 -mt-24 lg:-mt-28">
+    <section aria-label="Why buyers trust us" className="relative z-10 -mt-20 max-sm:hidden sm:-mt-24 lg:-mt-28">
       <div className="container">
         <Reveal>
           <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-md border-t-[3px] border-primary bg-line shadow-[0_28px_56px_-28px_rgb(34_35_38/0.5)] ring-1 ring-line sm:grid-cols-2 lg:grid-cols-5">
             {trustBar.map((t, i) => (
               <li
                 key={t.strong}
-                className={`group relative flex items-center gap-4 bg-white px-5 py-5 transition-colors duration-300 hover:bg-surface-raised sm:px-6 lg:flex-col lg:items-start lg:gap-5 lg:py-8 ${
+                className={`group relative flex items-center gap-3 bg-white px-4 py-3.5 transition-colors duration-300 hover:bg-surface-raised sm:gap-4 sm:px-6 sm:py-5 lg:flex-col lg:items-start lg:gap-5 lg:py-8 ${
                   i === trustBar.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''
                 }`}
               >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-gradient-to-b from-white to-surface text-primary shadow-[inset_0_1px_0_#fff,0_4px_10px_-6px_rgb(34_35_38/0.35)] ring-1 ring-line transition-all duration-300 group-hover:from-[#ee3a41] group-hover:to-primary-deep group-hover:text-white group-hover:ring-primary">
-                  <Icon name={trustIcons[i]} size={24} />
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-gradient-to-b sm:h-12 sm:w-12 from-white to-surface text-primary shadow-[inset_0_1px_0_#fff,0_4px_10px_-6px_rgb(34_35_38/0.35)] ring-1 ring-line transition-all duration-300 group-hover:from-[#ee3a41] group-hover:to-primary-deep group-hover:text-white group-hover:ring-primary">
+                  <Icon name={trustIcons[i]} size={22} />
                 </span>
                 <span className="flex flex-col gap-1.5">
-                  <span className="font-display text-[1.15rem] leading-tight font-semibold text-secondary sm:text-[1.3rem]">{t.strong}</span>
+                  <span className="font-display text-[1.05rem] leading-tight font-semibold text-secondary sm:text-[1.3rem]">{t.strong}</span>
                   <span className="eyebrow !text-[0.68rem] !tracking-[0.1em] text-text-muted">{t.rest}</span>
                 </span>
                 <span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -134,12 +176,12 @@ function WhoWeServe() {
             <SectionHead eyebrow="Who We Serve" title={whoWeServe.headline} />
           </Reveal>
           <Reveal delay={100} className="lg:col-span-5 lg:pt-12">
-            <p className="text-lg leading-relaxed text-text-muted">{whoWeServe.body}</p>
+            <p className="text-[0.95rem] leading-relaxed text-text-muted sm:text-lg">{whoWeServe.body}</p>
           </Reveal>
         </div>
 
         {/* Kitchen scene as the block background; client grid laid over its foot */}
-        <Reveal className="relative mt-12 overflow-hidden rounded-sm lg:h-[52rem]">
+        <Reveal className="relative mt-8 overflow-hidden rounded-sm sm:mt-12 lg:h-[52rem]">
           <img
             src={sceneSrc('kitchenLine')}
             alt={scenes.kitchenLine.alt}
@@ -151,21 +193,21 @@ function WhoWeServe() {
           />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/55 to-ink/10 lg:inset-x-0 lg:top-auto lg:h-3/4 lg:via-ink/50 lg:to-transparent" />
 
-          <ul className="relative grid gap-3 p-3 pt-56 sm:grid-cols-2 sm:gap-4 sm:p-6 sm:pt-80 lg:absolute lg:inset-x-8 lg:bottom-8 lg:grid-cols-3 lg:p-0">
+          <ul className="relative grid gap-2.5 p-3 pt-40 sm:gap-4 sm:p-6 sm:pt-80 lg:absolute lg:inset-x-8 lg:bottom-8 lg:grid-cols-3 lg:p-0">
           {whoWeServe.clients.map((c, i) => (
             <li
               key={c.strong}
               className="group rounded-sm border border-white/20 backdrop-blur-[3px] transition-colors duration-300 hover:border-white/40 hover:bg-black/55"
             >
-              <div className="flex h-full gap-5 p-6 sm:p-7">
-                <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-xs bg-white/10 text-white ring-1 ring-white/20 transition-colors group-hover:bg-primary group-hover:ring-primary">
+              <div className="flex h-full items-center gap-4 p-4 sm:items-start sm:gap-5 sm:p-7">
+                <div className="relative grid h-11 w-11 shrink-0 place-items-center rounded-xs bg-white/10 sm:h-12 sm:w-12 text-white ring-1 ring-white/20 transition-colors group-hover:bg-primary group-hover:ring-primary">
                   <Icon name={c.icon} size={26} />
                   <span className="stripes absolute -right-1 -bottom-1 h-3 w-3 text-accent" />
                 </div>
                 <div>
                   <span className="eyebrow !text-[0.7rem] text-accent-soft">{pad(i + 1)}</span>
-                  <h3 className="mt-1 text-[1.25rem] leading-snug font-semibold text-white">{c.strong}</h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-white/75">{c.rest}</p>
+                  <h3 className="mt-0.5 text-[1.05rem] leading-snug font-semibold text-white sm:mt-1 sm:text-[1.25rem]">{c.strong}</h3>
+                  <p className="mt-1 text-[0.85rem] leading-snug text-white/75 sm:mt-2 sm:text-[0.95rem] sm:leading-relaxed">{c.rest}</p>
                 </div>
               </div>
             </li>
@@ -173,8 +215,8 @@ function WhoWeServe() {
           </ul>
         </Reveal>
 
-        <Reveal className="mt-10">
-          <p className="flex items-start gap-4 border-l-4 border-primary bg-secondary px-6 py-5 font-display text-xl leading-snug font-medium text-surface sm:px-8 sm:py-6 sm:text-[1.6rem]">
+        <Reveal className="mt-6 sm:mt-10">
+          <p className="flex items-start gap-4 border-l-4 border-primary bg-secondary px-5 py-4 font-display text-[1.1rem] leading-snug font-medium text-surface sm:px-8 sm:py-6 sm:text-[1.6rem]">
             {whoWeServe.closing}
           </p>
         </Reveal>
@@ -192,11 +234,11 @@ function Products() {
             <SectionHead eyebrow="Product Range · 8 Categories" title={productsSection.headline} />
           </Reveal>
           <Reveal delay={100} className="max-w-md">
-            <p className="leading-relaxed text-text-muted">{productsSection.intro}</p>
+            <p className="text-[0.95rem] leading-relaxed text-text-muted sm:text-base">{productsSection.intro}</p>
           </Reveal>
         </div>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <ul className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 md:grid-cols-4 md:gap-3 lg:gap-5">
           {categories.map((c, i) => (
             <Reveal as="li" key={c.slug} delay={(i % 4) * 60}>
               <Link
@@ -216,21 +258,21 @@ function Products() {
                   {/* Soft shade behind the corner number + base fade into the card body */}
                   <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgb(34_35_38/0.55),transparent_45%)]" />
                   <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/35 to-transparent" />
-                  <span className="absolute top-3 left-3 grid h-10 w-10 place-items-center rounded-sm bg-white/90 text-secondary shadow-plate transition-colors group-hover:bg-primary group-hover:text-white">
+                  <span className="absolute top-3 left-3 grid h-10 w-10 place-items-center md:top-2 md:left-2 md:h-8 md:w-8 lg:top-3 lg:left-3 lg:h-10 lg:w-10 rounded-sm bg-white/90 text-secondary shadow-plate transition-colors group-hover:bg-primary group-hover:text-white">
                     <Icon name={c.theme.icon} size={21} />
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute top-2 right-4 bg-gradient-to-b from-white/95 via-white/60 to-white/10 bg-clip-text font-display text-[3.25rem] leading-none font-bold tracking-[-0.03em] text-transparent drop-shadow-[0_2px_6px_rgb(0_0_0/0.25)]"
+                    className="absolute top-2 right-4 bg-gradient-to-b from-white/95 via-white/60 to-white/10 bg-clip-text font-display text-[3.25rem] leading-none font-bold md:right-2 md:text-[2.25rem] lg:right-4 lg:text-[3.25rem] tracking-[-0.03em] text-transparent drop-shadow-[0_2px_6px_rgb(0_0_0/0.25)]"
                   >
                     {pad(i + 1)}
                   </span>
                 </div>
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="text-[1.25rem] leading-[1.2] font-semibold transition-colors group-hover:text-primary">{c.card.title}</h3>
-                  <p className="mt-2 text-[0.93rem] leading-relaxed text-text-muted">{c.card.summary}</p>
-                  <span className="mt-auto pt-5">
-                    <span className="inline-flex min-h-11 w-max items-center gap-3 rounded-sm bg-primary px-5 font-display text-[0.8rem] font-semibold tracking-[0.08em] text-white uppercase transition-colors group-hover:bg-primary-deep">
+                <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-3.5 lg:p-6">
+                  <h3 className="text-[1.25rem] leading-[1.2] font-semibold md:text-[1rem] lg:text-[1.25rem] transition-colors group-hover:text-primary">{c.card.title}</h3>
+                  <p className="mt-2 text-[0.93rem] leading-relaxed text-text-muted md:text-[0.8rem] md:leading-snug lg:text-[0.93rem] lg:leading-relaxed">{c.card.summary}</p>
+                  <span className="mt-auto pt-5 md:pt-3.5 lg:pt-5">
+                    <span className="inline-flex min-h-11 w-max items-center gap-3 rounded-sm bg-primary px-5 font-display text-[0.8rem] md:min-h-9 md:w-full md:justify-center md:gap-2 md:px-2 md:text-[0.68rem] lg:min-h-11 lg:w-max lg:gap-3 lg:px-5 lg:text-[0.8rem] font-semibold tracking-[0.08em] text-white uppercase transition-colors group-hover:bg-primary-deep">
                       View range
                       <Icon name="arrow" size={17} strokeWidth={2} className="transition-transform duration-200 group-hover:translate-x-1" />
                     </span>
@@ -254,7 +296,7 @@ function FortyYears() {
       <div className="container relative">
         <Reveal>
           <Eyebrow>Why Star Metal Store</Eyebrow>
-          <h2 className="mt-5 max-w-4xl text-[1.95rem] leading-[1.1] font-semibold text-secondary sm:text-[2.6rem] lg:text-[3rem]">
+          <h2 className="mt-4 max-w-4xl text-[1.5rem] leading-[1.14] sm:mt-5 sm:leading-[1.1] font-semibold text-secondary sm:text-[2.6rem] lg:text-[3rem]">
             {whyUs.headline[0]}
             <span className="block text-primary">{whyUs.headline[1]}</span>
           </h2>
@@ -262,10 +304,10 @@ function FortyYears() {
 
         <div className="mt-12 grid gap-10 lg:mt-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <p className="max-w-[42rem] text-lg leading-relaxed text-text-primary">
+            <p className="max-w-[42rem] text-[0.95rem] leading-relaxed text-text-primary sm:text-lg">
               {whyUs.body}
             </p>
-            <p className="mt-6 font-display text-xl leading-snug font-medium text-secondary">{whyUs.bridge}</p>
+            <p className="mt-5 font-display text-[1.05rem] leading-snug font-medium text-secondary sm:mt-6 sm:text-xl">{whyUs.bridge}</p>
             <img
               src={sceneSrc('teaKadai')}
               alt={scenes.teaKadai.alt}
@@ -289,7 +331,7 @@ function FortyYears() {
               />
               <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/80 to-ink/15" />
               <span className="font-display text-8xl leading-[0.4] text-accent" aria-hidden="true">“</span>
-              <blockquote className="mt-4 font-display text-[1.65rem] leading-[1.2] font-medium sm:text-[2.1rem] lg:text-[2.4rem]">
+              <blockquote className="mt-4 font-display text-[1.3rem] leading-[1.25] sm:leading-[1.2] font-medium sm:text-[2.1rem] lg:text-[2.4rem]">
                 {whyUs.pullQuote}
               </blockquote>
               <figcaption className="eyebrow mt-8 flex items-center gap-2 border-t border-line-dark pt-6 text-accent-soft">
@@ -299,23 +341,23 @@ function FortyYears() {
           </Reveal>
         </div>
 
-        <Reveal as="ol" className="mt-14 grid gap-5 md:grid-cols-2">
+        <Reveal as="ol" className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 md:grid-cols-4 md:gap-3 lg:gap-5">
           {whyUs.pillars.map((p, i) => (
             <li
               key={p.title}
-              className="group relative isolate overflow-hidden rounded-md border border-white bg-gradient-to-b from-white via-surface-raised to-surface p-7 shadow-[inset_0_1px_0_#fff,0_1px_2px_rgb(34_35_38/0.06),0_14px_32px_-18px_rgb(34_35_38/0.35)] ring-1 ring-line transition-[transform,box-shadow] duration-300 ease-[var(--ease-weight)] hover:-translate-y-1 hover:shadow-[inset_0_1px_0_#fff,0_1px_2px_rgb(34_35_38/0.06),0_22px_40px_-18px_rgb(34_35_38/0.45)] sm:p-9"
+              className="group relative isolate overflow-hidden rounded-md border border-white bg-gradient-to-b from-white via-surface-raised to-surface p-7 shadow-[inset_0_1px_0_#fff,0_1px_2px_rgb(34_35_38/0.06),0_14px_32px_-18px_rgb(34_35_38/0.35)] ring-1 ring-line transition-[transform,box-shadow] duration-300 ease-[var(--ease-weight)] hover:-translate-y-1 hover:shadow-[inset_0_1px_0_#fff,0_1px_2px_rgb(34_35_38/0.06),0_22px_40px_-18px_rgb(34_35_38/0.45)] sm:p-9 md:p-5 xl:p-7"
             >
               {/* Gloss sheen across the top half */}
               <span aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-1/2 bg-gradient-to-b from-white/90 to-transparent" />
               <span aria-hidden="true" className="absolute -top-16 -right-16 -z-10 h-40 w-40 rounded-full bg-accent/10 blur-2xl transition-colors group-hover:bg-primary/10" />
-              <div className="flex items-center gap-5">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-md bg-gradient-to-b from-[#ee3a41] to-primary-deep text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_8px_16px_-8px_rgb(224_32_40/0.7)]">
-                  <Icon name={pillarIcons[i]} size={28} />
+              {/* Four across from md: icon stacks above the title */}
+              <div className="flex items-center gap-5 md:flex-col md:items-start md:gap-4">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-md bg-gradient-to-b from-[#ee3a41] to-primary-deep text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_8px_16px_-8px_rgb(224_32_40/0.7)] md:h-12 md:w-12">
+                  <Icon name={pillarIcons[i]} size={26} />
                 </span>
-                <h3 className="text-[1.35rem] leading-snug font-semibold text-secondary sm:text-[1.45rem]">{p.title}</h3>
+                <h3 className="text-[1.15rem] leading-snug font-semibold text-secondary sm:text-[1.45rem] md:line-clamp-2 md:min-h-[2.75em] md:text-[1.02rem] lg:text-[1.15rem] xl:text-[1.25rem]">{p.title}</h3>
               </div>
-              <p className="mt-5 leading-relaxed text-text-muted">{p.body}</p>
-              <span aria-hidden="true" className="mt-6 block h-[2px] w-10 bg-accent transition-all duration-300 group-hover:w-20 group-hover:bg-primary" />
+              <p className="mt-5 leading-relaxed text-text-muted md:mt-3 md:text-[0.85rem] lg:text-[0.93rem]">{p.body}</p>
             </li>
           ))}
         </Reveal>
@@ -389,47 +431,18 @@ function LocationReach() {
   )
 }
 
-function Testimonials() {
-  return (
-    <section className="section tex-grain">
-      <div className="container">
-        <Reveal>
-          <SectionHead eyebrow="Social Proof" title={testimonials.headline} />
-        </Reveal>
-        <ul className="mt-10 grid gap-4 md:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <Reveal as="li" key={i} delay={i * 80} className="pending flex min-h-52 flex-col p-6">
-              <span className="font-display text-6xl leading-[0.5] text-accent/60" aria-hidden="true">“</span>
-              <div className="mt-4 space-y-2" aria-hidden="true">
-                <div className="h-2 w-full bg-accent/15" />
-                <div className="h-2 w-11/12 bg-accent/15" />
-                <div className="h-2 w-3/4 bg-accent/15" />
-              </div>
-              <div className="mt-auto pt-6">
-                <div className="h-2 w-1/3 bg-accent/25" aria-hidden="true" />
-              </div>
-            </Reveal>
-          ))}
-        </ul>
-        <Reveal className="mt-6">
-          <Pending note={testimonials.placeholder} />
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
 export default function Home() {
   usePageMeta(null, meta.home)
   return (
     <>
       <Hero />
+      <TrustCarousel />
       <TrustBar />
       <WhoWeServe />
       <Products />
       <FortyYears />
       <LocationReach />
-      <Testimonials />
+      <GoogleReviews />
     </>
   )
 }

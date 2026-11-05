@@ -4,9 +4,9 @@ export const hero = {
   headline: "Pondicherry's Most Trusted Bulk Metal & Hotel Equipment Supplier — Since 1988",
   subheadline:
     'From traditional brass dabara sets to full restaurant machinery — sourced heavy, priced fair, delivered right.',
-  body: 'For over four decades, Star Metal Store has been the go-to wholesale destination for restaurants, catering businesses, hotels, and food service operators across Puducherry and Tamil Nadu. Whether you run a small tea kadai in the lanes of White Town or a corporate canteen in an IT park — we stock what your kitchen demands, at kilogram-based wholesale rates that stand against any Chennai market comparison.',
-  primaryCta: 'Get a Bulk Quote',
-  secondaryCta: 'Browse Our Product Range',
+  body: 'Wholesale supplier to restaurants, caterers, hotels and canteens across Puducherry and Tamil Nadu — from a tea kadai to an IT-park canteen, at kilogram rates that match Chennai.',
+  primaryCta: 'Contact Us',
+  secondaryCta: 'Our Products',
 }
 
 // TRUST BAR — `strong` is the bold lead, `rest` the remainder
@@ -20,46 +20,46 @@ export const trustBar = [
 
 export const whoWeServe = {
   headline: 'Built for the Business Kitchen, Not the Home Cook',
-  body: 'Star Metal Store is not a retail showroom. We are a wholesale supplier built for professionals — people who understand the difference between a 20-litre idly pot and a 100-litre one, and why that matters on a catering day. Our clients include:',
+  body: 'Not a retail showroom — a wholesale supplier for professionals who know why a 100-litre idly pot beats a 20-litre one on a catering day.',
   clients: [
-    { icon: 'hotel', strong: 'Hotel & Restaurant Owners', rest: 'looking for bulk stainless steel vessels, cookware, and gas equipment' },
-    { icon: 'carrier', strong: 'Catering Contractors', rest: 'needing large-format storage drums, carriers, and serving equipment' },
-    { icon: 'canteen', strong: 'Corporate Canteen Operators', rest: 'outfitting lunch counters, bain-marie stations, and cutlery banks' },
-    { icon: 'tea', strong: 'Tea & Tiffin Shop Proprietors', rest: 'setting up burner stations and boiler lines' },
-    { icon: 'mixer', strong: 'Bakery & Café Operators', rest: 'sourcing planetary mixers, display showcases, and dispensing units' },
-    { icon: 'scale', strong: 'Merchants & Traders', rest: 'buying stainless steel, brass, and copper goods for resale' },
+    { icon: 'hotel', strong: 'Hotel & Restaurant Owners', rest: 'Bulk vessels, cookware & gas equipment' },
+    { icon: 'carrier', strong: 'Catering Contractors', rest: 'Drums, carriers & serving equipment' },
+    { icon: 'canteen', strong: 'Corporate Canteen Operators', rest: 'Bain-marie counters & cutlery banks' },
+    { icon: 'tea', strong: 'Tea & Tiffin Shop Proprietors', rest: 'Burner stations & boiler lines' },
+    { icon: 'mixer', strong: 'Bakery & Café Operators', rest: 'Mixers, showcases & dispensers' },
+    { icon: 'scale', strong: 'Merchants & Traders', rest: 'Steel, brass & copper for resale' },
   ],
-  closing: "If you're buying to stock a kitchen that feeds 50 people or more — you're in the right place.",
+  closing: "Feeding 50 people or more? You're in the right place.",
 }
 
 export const productsSection = {
   headline: 'What We Stock',
   intro:
-    'Our catalogue covers every segment of the commercial food service industry. Each category is stocked with depth — not just one or two items, but the complete range your operation needs.',
+    'Eight categories, each stocked in depth — the complete working range your kitchen needs, not one or two items.',
 }
 
 export const whyUs = {
   headline: ['Forty Years Is Not a Number.', "It's a Track Record."],
-  body: 'When Star Metal Store opened its doors in Pondicherry in 1988, the founders understood one thing clearly — the commercial kitchen trade runs on trust. A restaurant owner cannot afford to outfit their kitchen with equipment that fails in six months. A caterer cannot have a carrier that leaks on a wedding day. A tea shop cannot lose business because a boiler gave out.',
+  body: 'Since 1988 we have known one thing: the kitchen trade runs on trust. A caterer cannot have a carrier that leaks on a wedding day, or a boiler that gives out mid-rush.',
   bridge: 'That understanding is baked into how we operate:',
   // Pull-quote lifted from the body above
   pullQuote: 'A caterer cannot have a carrier that leaks on a wedding day.',
   pillars: [
     {
       title: 'Quality That Lasts',
-      body: 'We do not stock items for a single season. Every product we carry is chosen for commercial-grade durability. We sell quality items intended to be used for the long term — not to be replaced every year.',
+      body: 'Commercial-grade goods chosen to last years, not a season.',
     },
     {
       title: 'Pricing That Makes Sense',
-      body: 'Our pricing model is straightforward: kilogram-based wholesale rates. No inflated retail margins. No middle-man markups. Our prices are benchmarked against Chennai market rates — and we consistently match or beat them, without the travel time or freight cost.',
+      body: 'Kilogram-based wholesale rates, no middle-man markup. We match or beat Chennai — without the freight.',
     },
     {
-      title: 'Service That Continues After the Sale',
-      body: 'We provide after-sales service on our product range. If something needs attention after purchase, we stand behind what we sold you. Replacements are provided in applicable cases.',
+      title: 'Service After the Sale',
+      body: 'We stand behind what we sell, with service and replacements in applicable cases.',
     },
     {
-      title: 'Three Generations of Trade Knowledge',
-      body: 'This store has been passed down through three generations of the same family. The knowledge of materials — what gauge steel holds heat better, which copper alloy is right for which application, how to spec a dabara set for a 200-cover restaurant — is not something you find on a catalogue sheet. It comes from decades in the trade. We bring that to every conversation with our buyers.',
+      title: 'Decades of Trade Know-How',
+      body: 'Three generations of knowing which gauge holds heat and how to spec a dabara set for 200 covers.',
     },
   ],
 }
@@ -67,14 +67,50 @@ export const whyUs = {
 export const location = {
   headline: 'Located in Puducherry. Serving Tamil Nadu and Beyond.',
   body: [
-    'Our store is based in Pondicherry — a trade city with a long history of connecting regional buyers to quality goods. Our location gives buyers from Cuddalore, Villupuram, Tindivanam, Chidambaram, and the broader Tamil Nadu belt a reliable local source for commercial kitchen equipment and metal goods, without needing to make a trip to Chennai.',
-    'Bulk buyers and traders from outside the region are welcome to visit us directly. For larger orders, we coordinate delivery arrangements — speak to our team.',
+    'A reliable local source for buyers from Cuddalore, Villupuram, Tindivanam, Chidambaram and across Tamil Nadu — no trip to Chennai needed.',
+    'Visit us directly — for larger orders, we arrange delivery.',
   ],
   cta: 'Contact Us for Bulk Orders',
 }
 
 export const testimonials = {
   headline: 'Trusted by Operators Across the Region',
-  placeholder:
-    'Client testimonials to be added — caterers, hotel owners, restaurant chains in Puducherry, Villupuram, Cuddalore districts',
+  // Google Maps reviews, copied as written. Text-less ratings and critical reviews are left out.
+  reviews: [
+    {
+      name: 'Muthu Raja',
+      meta: '3 reviews',
+      when: '2 months ago',
+      rating: 5,
+      text: 'As a chef, I regularly look for good-quality kitchen equipment at reasonable prices, and Starmetal is a great place for that. Good quality knives, vessels, and kitchen essentials at affordable prices. Highly recommended for professional kitchen needs.',
+    },
+    {
+      name: 'Namya Mahadev',
+      meta: '1 review',
+      when: '2 months ago',
+      rating: 5,
+      text: 'Nice shop to purchase untesills at very low price high quality things very good staaf are definitely come to here',
+    },
+    { name: 'Manikandan', meta: '4 reviews · 1 photo', when: '2 months ago', rating: 5, text: 'Service is good and affordable price and quality also good' },
+    { name: 'Sathish Soft', meta: '5 reviews', when: '3 months ago', rating: 5, text: 'I bought Good products for my soup shop' },
+    { name: 'Dhiyagu Smart', meta: '4 reviews · 1 photo', when: '3 months ago', rating: 5, text: 'Good customer service and good product knowledge' },
+    {
+      name: 'Shavnal Jack',
+      meta: 'Local Guide · 48 reviews · 144 photos',
+      when: '9 months ago',
+      rating: 5,
+      text: 'Your starting new shop get one stop all things for your needs completed',
+    },
+    { name: 'Silviya S', meta: '3 reviews · 1 photo', when: '2 weeks ago', rating: 5, text: 'Good' },
+    { name: 'Abdul Rahaman', meta: 'Local Guide · 10 reviews · 3 photos', when: '3 years ago', rating: 5, text: 'Very good place' },
+    {
+      name: 'Anandbabu Surendran',
+      meta: 'Local Guide · 31 reviews · 28 photos',
+      when: '6 years ago',
+      rating: 5,
+      text: 'Due to Corona much items were not available but very reasonable price',
+    },
+    { name: 'AK Tech', meta: 'Local Guide · 29 reviews · 344 photos', when: '9 years ago', rating: 5, text: 'Best quality products and reasonable rate' },
+    { name: 'Janarthanan Jana', meta: '2 reviews', when: '8 years ago', rating: 5, text: 'Good shoppe and good price' },
+  ],
 }

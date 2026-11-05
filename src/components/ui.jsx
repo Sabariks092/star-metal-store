@@ -95,11 +95,11 @@ export function SectionHead({ eyebrow, title, lede, tone = 'dark', align = 'left
   return (
     <div className={`${center ? 'mx-auto text-center' : ''} max-w-3xl ${className}`}>
       {eyebrow && <Eyebrow tone={tone} className={center ? 'justify-center' : ''}>{eyebrow}</Eyebrow>}
-      <h2 className={`mt-4 text-[1.8rem] leading-[1.12] font-semibold sm:text-[2.25rem] lg:text-[2.5rem] ${tone === 'light' ? 'text-surface' : 'text-secondary'}`}>
+      <h2 className={`mt-3 text-[1.5rem] leading-[1.15] sm:mt-4 sm:leading-[1.12] font-semibold sm:text-[2.25rem] lg:text-[2.5rem] ${tone === 'light' ? 'text-surface' : 'text-secondary'}`}>
         {title}
       </h2>
       {lede && (
-        <p className={`mt-5 text-lg leading-relaxed ${tone === 'light' ? 'text-text-inverse-muted' : 'text-text-muted'}`}>{lede}</p>
+        <p className={`mt-4 text-[0.95rem] leading-relaxed sm:mt-5 sm:text-lg ${tone === 'light' ? 'text-text-inverse-muted' : 'text-text-muted'}`}>{lede}</p>
       )}
     </div>
   )

@@ -4,7 +4,7 @@
 export const aboutHero = {
   heading: 'Forty Years of Metal. Three Generations of Trust.',
   subheading:
-    "The story of Star Metal Store, Pondicherry's wholesale kitchen equipment and metal goods supplier since 1988.",
+    "Pondicherry's wholesale kitchen and metal goods supplier since 1988.",
 }
 
 export const story = {
@@ -15,22 +15,21 @@ export const story = {
       year: '1988',
       label: 'Founded',
       paragraphs: [
-        'Star Metal Store was founded in Pondicherry in **1988** — at a time when the commercial kitchen trade in the region was served primarily by traders making irregular trips to Chennai. Our founder saw a clear gap: local restaurant owners, tea kadai operators, and catering businesses needed a reliable, permanent supplier right here in Pondicherry — someone who understood the local trade, spoke the trade language, and stood behind what they sold.',
-        'From those early years, we built the store around a simple premise: stock the right things, price them fairly, and be there when the customer needs you after the sale.',
+        'Founded in **1988**, when local kitchens relied on irregular trips to Chennai. Our founder built a permanent local supplier: stock the right things, price them fairly, stand behind every sale.',
       ],
     },
     {
       year: '2000',
       label: 'Renovation & Expansion',
       paragraphs: [
-        'By **2000**, the business had grown enough to warrant a full renovation and expansion of our premises — broadening our catalogue and our capacity to serve the growing food service industry in the region.',
+        'In **2000**, a full renovation and expansion broadened our catalogue and capacity.',
       ],
     },
     {
       year: 'Today',
       label: 'Third Generation',
       paragraphs: [
-        "Today, Star Metal Store is led by the **third generation of the founding family** — carrying forward the same trade ethic that built the store's reputation across four decades.",
+        'Now led by the **third generation of the founding family**, with the same trade ethic.',
       ],
     },
   ],
@@ -39,7 +38,7 @@ export const story = {
 export const whatWeDo = {
   heading: 'More Than a Metal Store',
   body: [
-    'The name "Star Metal Store" reflects our roots — we are, at heart, a metal goods supplier. Stainless steel vessels, traditional brassware, and copper items form the core of our trade. But over the years, our catalogue has grown alongside the industry we serve.',
+    'At heart a metal goods store — steel, brass and copper — our catalogue has grown with the trade we serve.',
   ],
   listIntro: 'Today, we supply:',
   list: [
@@ -52,21 +51,21 @@ export const whatWeDo = {
     { strong: 'Hawkins pressure cookers and cookware', rest: 'including spare parts' },
   ],
   closing:
-    'Every category we carry is stocked with depth. We are not a shop that carries one size of one item. We carry the full working range that a professional buyer actually needs.',
+    'Every category stocked in depth — the full working range, not one size of one item.',
 }
 
 export const approach = {
   heading: 'How We Do Business',
-  body: 'We are a wholesale supplier — our pricing model is kilogram-based, which means you pay for what you get, not for a branded margin. Our rates are consistently comparable to Chennai market pricing. For buyers in Puducherry and the surrounding districts, that means significant savings on freight and transit time.',
+  body: 'Kilogram-based wholesale pricing — pay for the metal, not a brand margin. Chennai-level rates, without the freight.',
   listIntro: 'We are **customer-oriented in our service**. That means:',
   list: [
-    'We understand what your operation needs before we recommend a product',
-    'We stock products that match your volume and usage requirements — not just what is easiest to sell',
-    'We provide **after-sales service** on applicable products',
-    'We provide **replacements in applicable cases** — we stand behind our stock',
+    'We understand your operation before we recommend',
+    'We stock for your volume, not what is easiest to sell',
+    '**After-sales service** on applicable products',
+    '**Replacements in applicable cases**',
   ],
   closing:
-    'We do not compromise on quality. The equipment a restaurant or catering business uses must hold up under daily commercial pressure — heavy usage, high heat, bulk loads. We apply that standard to everything we stock.',
+    'No compromise on quality — everything we stock must survive heavy use, high heat and bulk loads.',
 }
 
 export const numbers = {
@@ -87,22 +86,22 @@ export const values = {
     {
       icon: 'hourglass',
       title: 'Longevity Over Convenience',
-      body: 'We sell goods meant to last. A stainless-steel vessel bought from us should serve a kitchen for years, not months. We do not stock items to move volume; we stock items because they are right for the job.',
+      body: 'A vessel from us should serve your kitchen for years, not months.',
     },
     {
       icon: 'scale',
       title: 'Pricing Transparency',
-      body: 'Kilogram-based wholesale pricing means there is no ambiguity. You know what you are paying for and why. Our goal is to be the most price-competitive reliable supplier in the region — not the cheapest unreliable one.',
+      body: 'Kilogram pricing — you know exactly what you pay for, and why.',
     },
     {
       icon: 'book',
       title: 'Trade Knowledge',
-      body: "Three generations in the same trade means we understand materials. We understand what a restaurant in Pondicherry's humid coast needs versus an inland catering operation. That knowledge is available to every buyer who walks through our door or calls us.",
+      body: 'Three generations of material know-how, shared with every buyer.',
     },
     {
       icon: 'handshake',
       title: 'After-Sale Accountability',
-      body: 'The sale is not the end of our relationship with a buyer. If a product has an issue, we address it. That is the standard we hold ourselves to — because our business has been built on repeat orders and word-of-mouth across decades.',
+      body: 'If a product has an issue, we fix it. Repeat orders built this store.',
     },
   ],
 }
