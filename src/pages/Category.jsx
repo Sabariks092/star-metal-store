@@ -15,7 +15,6 @@ function ProductImage({ slug, name, className }) {
 }
 
 function ProductLedger({ c, enquireTo }) {
-  const [featured, ...rest] = c.products
   return (
     <section className="section bg-surface-raised">
       <div className="container">
@@ -28,57 +27,28 @@ function ProductLedger({ c, enquireTo }) {
           </Reveal>
         </div>
 
-        {/* Showcase: the first product as a wide feature, the rest as tall catalogue cards */}
-        {featured && (
-          <Reveal className="mt-10">
-            <article className="group grid overflow-hidden rounded-md border border-line bg-white shadow-plate transition-shadow duration-300 hover:shadow-lift lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-              <div className="relative aspect-square w-full overflow-hidden bg-surface sm:aspect-[4/3] lg:aspect-square">
-                <ProductImage
-                  slug={c.slug}
-                  name={featured.name}
-                  className="h-full w-full transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="relative flex flex-col justify-center p-6 sm:p-10 lg:p-14">
-                <span className="absolute inset-x-0 top-0 h-1 bg-primary lg:inset-y-0 lg:right-auto lg:h-auto lg:w-1" />
-                <span aria-hidden="true" className="font-display text-[4.5rem] leading-none font-bold tracking-[-0.04em] text-surface-sunk sm:text-[6rem]">
-                  {pad(1)}
-                </span>
-                <ProductBody p={featured} large />
-                <EnquireButton to={enquireTo} className="mt-8" />
-              </div>
-            </article>
-          </Reveal>
-        )}
-
-        {rest.length > 0 && (
-          <ul className="mt-6 flex flex-wrap justify-center gap-6">
-            {rest.map((p, i) => (
-              <Reveal
-                as="li"
-                key={p.name}
-                delay={(i % 3) * 70}
-                className="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
-              >
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-white shadow-plate transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-weight)] hover:-translate-y-1 hover:border-secondary/25 hover:shadow-lift">
-                  <div className="relative aspect-square w-full overflow-hidden bg-surface">
-                    <ProductImage
-                      slug={c.slug}
-                      name={p.name}
-                      className="h-full w-full transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.06]"
-                    />
-                    <NumberChip n={i + 2} />
-                  </div>
-                  <span aria-hidden="true" className="h-[3px] w-full origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
-                  <div className="flex flex-1 flex-col p-6">
-                    <ProductBody p={p} />
-                    <EnquireButton to={enquireTo} className="mt-auto pt-6" />
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </ul>
-        )}
+        {/* Catalogue grid: 1 column on phones, 2 on tablets, 3 from desktop */}
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {c.products.map((p, i) => (
+            <Reveal as="li" key={p.name} delay={(i % 3) * 70}>
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-white shadow-plate transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-weight)] hover:-translate-y-1 hover:border-secondary/25 hover:shadow-lift">
+                <div className="relative aspect-square w-full overflow-hidden bg-surface">
+                  <ProductImage
+                    slug={c.slug}
+                    name={p.name}
+                    className="h-full w-full transition-transform duration-700 ease-[var(--ease-weight)] group-hover:scale-[1.06]"
+                  />
+                  <NumberChip n={i + 1} />
+                </div>
+                <span aria-hidden="true" className="h-[3px] w-full origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+                <div className="flex flex-1 flex-col p-6">
+                  <ProductBody p={p} />
+                  <EnquireButton to={enquireTo} className="mt-auto pt-6" />
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
       </div>
     </section>
   )
@@ -92,16 +62,16 @@ function NumberChip({ n }) {
   )
 }
 
-function ProductBody({ p, large = false }) {
+function ProductBody({ p }) {
   return (
     <>
-      <h3 className={`font-semibold text-secondary ${large ? 'mt-2 text-[1.4rem] leading-tight sm:text-[2.25rem]' : 'text-[1.15rem] leading-snug sm:text-[1.3rem]'}`}>{p.name}</h3>
+      <h3 className="text-[1.15rem] leading-snug font-semibold text-secondary sm:text-[1.3rem]">{p.name}</h3>
       {p.alias && (
         <span className="mt-2 inline-block self-start rounded-sm border border-line bg-surface px-2 py-0.5 text-[0.8rem] text-text-muted">
           also: <em>{p.alias}</em>
         </span>
       )}
-      <p className={`mt-3 leading-relaxed text-text-muted ${large ? 'max-w-prose text-[0.95rem] sm:text-lg' : 'text-[0.9rem] sm:text-[0.95rem]'}`}>{p.desc}</p>
+      <p className="mt-3 text-[0.9rem] leading-relaxed text-text-muted sm:text-[0.95rem]">{p.desc}</p>
       {p.note && (
         <p className="mt-4 rounded-sm border-l-2 border-accent bg-surface px-3 py-2 text-sm leading-relaxed text-text-muted">{p.note}</p>
       )}
