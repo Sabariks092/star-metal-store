@@ -44,6 +44,10 @@ export const productImages = {
     'Square Idly Pots': ['TRAY IDLY POT.jpeg', 'Square tray-type idly pot with a stack of slide-in idly trays'],
     'Stock Pots': ['STOCK POT.jpeg', 'Stainless steel stock pot with a glass lid and side handles on a wooden table'],
     'Work Tables': ['WORK TABLE.jpeg', 'Stainless steel work table with two undershelves'],
+    'Dosa Stoves (Hot Plates)': ['DOSA STOVE.jpeg', 'Commercial stainless steel dosa stove with a thick mild-steel hot plate'],
+    'Shawarma Machines': ['SHAWARMA MACHINE.jpeg', 'Vertical stainless steel gas shawarma machine with dual radiant burners'],
+    'Chicken Grill Machines': ['ARABIAN GRILL CHICKEN.jpeg', 'Commercial stainless steel rotary chicken grill machine with glass doors'],
+    'Charcoal BBQ Grills': ['BBQ GRILL.jpeg', 'Stainless steel commercial charcoal barbecue grill on a stand with undershelf'],
   },
   'catering-equipment': {
     'Big-Size Carriers (Catering Carriers)': ['CATERING CARRIERS.jpeg', 'Two tall multi-tier stainless steel catering carriers in a carrying frame'],
@@ -62,6 +66,7 @@ export const productImages = {
     'Lunch Plates (Full Plate)': ['full-size-steel-lunch-plates', 'Stack of full-size stainless steel lunch plates'],
     'Bain-Marie Units': ['BAIN MARIE.jpeg', 'Six-well stainless steel gas-operated bain-marie counter'],
     'Tables and Chairs': ['TABLE AND CHAIR.jpeg', 'Canteen dining table with four steel-frame chairs'],
+    'Copper & Steel Thali Sets': ['COPPER THALI SET.jpeg', 'Two-tone copper and stainless steel thali plate with katori bowls, spoon and tumbler'],
   },
   machinery: {
     'Atta Machines (Flour Grinders)': ['ATTA KNEADER.jpeg', 'Commercial atta kneading machine with a motor and stainless steel bowl'],
@@ -80,8 +85,8 @@ export const productImages = {
     'Planetary Mixers': ['commercial-planetary-mixer', 'Commercial planetary mixer with stainless steel bowl'],
     'Blenders (Commercial)': ['commercial-high-speed-blenders', 'Two commercial high-speed blenders with smoothies'],
     'Display Showcases': ['curved-glass-bakery-display-showcase', 'Curved-glass bakery display showcase with cakes and pastries'],
-    'Tea/Coffee Dispensing Units': ['tea-coffee-dispensing-unit', 'Stainless steel tea and coffee dispensing unit'],
-    'Tea Makers (Machine)': ['commercial-tea-making-machine', 'Commercial tea-making machine with glass carafe on a hotplate'],
+    'Tea/Coffee Dispensing Units': ['TEA COFFEE DISPENSING UNIT.jpeg', 'Commercial four-option tea and coffee dispensing machine'],
+    'Tea Makers (Machine)': ['TEA MAKER MACHINE.jpeg', 'Two-tier stainless steel traditional tea maker with tap'],
     'Coffee Makers (Espresso & Filter Machines)': ['espresso-machine-and-filter-coffee-maker', 'Two-group espresso machine and a South Indian filter coffee maker'],
     'Warmers (Food & Beverage Warmers)': ['countertop-snack-food-warmer', 'Countertop food warmer with samosas, puffs and vadas'],
     'Ovens (Baking/Cooking Ovens)': ['two-deck-commercial-baking-oven', 'Two-deck commercial baking oven with bread loaves'],
@@ -92,9 +97,8 @@ export const productImages = {
 
 export const productImage = (slug, name) => {
   const [file, alt] = productImages[slug][name]
-  // Real photos vary in shape and may have product detail near the edges, so they are fitted, never cropped.
   return file.endsWith('.jpeg')
-    ? { src: encodeURI(`${base}/products/real assets/${file}`), alt, fit: 'bg-white object-contain' }
+    ? { src: encodeURI(`${base}/products/real assets/${file}`), alt, fit: 'object-cover' }
     : { src: `${base}/products/${file}.webp`, alt, fit: 'object-cover' }
 }
 

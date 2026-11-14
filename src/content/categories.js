@@ -81,10 +81,14 @@ export const categories = [
         note: 'Note: Hindolium refers to aluminium alloy construction; confirm specific grade with our team.',
       },
       { name: 'Idly Pots — Standard Round', desc: 'Commercial round idly pots with multiple tray options for high volume.' },
-      { name: 'Round Idly Pots', desc: 'Heavy-gauge round pots in 24, 48 and higher-count batch sizes.' },
+      // { name: 'Round Idly Pots', desc: 'Heavy-gauge round pots in 24, 48 and higher-count batch sizes.' },
       { name: 'Square Idly Pots', desc: 'Space-saving square idly pots that stack neatly for storage.' },
       { name: 'Stock Pots', desc: 'Stainless steel stock pots with lids — for soups, gravies, and stocks in a busy restaurant kitchen.' },
       { name: 'Work Tables', desc: 'Stainless steel work tables with undershelves — a sturdy prep surface with storage below for kitchen prep stations.' },
+      { name: 'Dosa Stoves (Hot Plates)', desc: 'Heavy-duty commercial gas dosa stoves with thick mild-steel hot plates for tiffin centres and restaurants.' },
+      { name: 'Shawarma Machines', desc: 'Vertical stainless steel gas shawarma rotisseries with radiant burners and drip trays.' },
+      { name: 'Chicken Grill Machines', desc: 'Commercial multi-skewer rotary chicken grill machines with glass doors for hotel and restaurant counters.' },
+      { name: 'Charcoal BBQ Grills', desc: 'Stainless steel charcoal barbecue grill stands for live tandoor, tikka and grill counters.' },
     ],
     note: {
       heading: 'Buyer Note',
@@ -157,6 +161,7 @@ export const categories = [
       { name: 'Lunch Plates (Full Plate)', desc: 'Full-size stainless steel plates for South Indian rice meals.' },
       { name: 'Bain-Marie Units', desc: 'Warming counters that hold food at serving temperature through lunch.' },
       { name: 'Tables and Chairs', desc: 'Stackable steel and MS-frame tables and chairs for high-traffic dining.' },
+      { name: 'Copper & Steel Thali Sets', desc: 'Two-tone copper and stainless steel dinner thali sets with katori bowls and tumbler for hotels and dining halls.' },
     ],
     note: {
       heading: 'Buyer Note',
