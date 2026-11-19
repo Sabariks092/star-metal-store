@@ -227,7 +227,7 @@ export const categories = [
     ],
     note: {
       heading: 'Buyer Note',
-      body: 'Traders get wholesale Hawkins pricing across Pondicherry and Tamil Nadu. Operators get genuine spares on hand — less downtime for high-volume kitchens.',
+      body: 'Traders get wholesale Hawkins pricing across Pondicherry and Tamil Nadu. Operators get genuine spares on hand',
     },
     cta: 'Enquire About Hawkins Bulk Supply',
     meta: 'Hawkins pressure cookers, cookware, and genuine spare parts — wholesale supply from Star Metal Store, Pondicherry for commercial operators and traders in Tamil Nadu.',

@@ -55,7 +55,7 @@ export const productImages = {
     'Dabara Sets (Catering Grade)': ['DABARA SETS.jpeg', 'Stack of large catering-grade dabaras in graded sizes'],
     'Anda (Serving/Transfer Vessels)': ['ANDA.jpeg', 'Large straight-sided metal anda vessel'],
     'Anda Tables / Service Tables': ['MARRIAGE HALL TABLE.jpeg', 'Long steel-topped folding service table on a blue frame'],
-    'Cotton Candy Machines': ['COTTON CANDY MACHINE.jpeg', 'Pink cotton candy machine with a stainless steel spinning bowl and a cone of pink candy floss'],
+    'Cotton Candy Machines': ['COTTON CANDY MACHINE.webp', 'Pink cotton candy machine with a stainless steel spinning bowl and a cone of pink candy floss'],
     'Popcorn Machines': ['POP CORN MACHINE.jpeg', 'Red-roofed popcorn machine with a glass cabinet and steel kettle'],
     'Biryani Dabara / Handi': ['BIRYANI DABARA.jpeg', 'Stack of stainless steel biryani handis in graded sizes'],
   },
@@ -97,7 +97,7 @@ export const productImages = {
 
 export const productImage = (slug, name) => {
   const [file, alt] = productImages[slug][name]
-  return file.endsWith('.jpeg')
+  return /\.(jpe?g|webp|png)$/i.test(file)
     ? { src: encodeURI(`${base}/products/real assets/${file}`), alt, fit: 'object-cover' }
     : { src: `${base}/products/${file}.webp`, alt, fit: 'object-cover' }
 }
